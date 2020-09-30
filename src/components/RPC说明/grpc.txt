@@ -1,0 +1,105 @@
+//定义服务
+
+
+//简单服务
+rpc GetFeature(Point) returns (Feature) {}
+
+//服务端流式服务
+rpc ListFeatures(Rectangle) returns (stream Feature) {}
+
+//客户端流式服务
+rpc RecordRoute(stream Point) returns (RouteSummary) {}
+
+//双向流式服务
+rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
+
+
+
+//  创建服务端（创建服务）
+//  一、简单rpc
+function checkFeature(point) {
+    var feature
+    // Check if there is already a feature object for the given point
+    for (var i = 0; i < feature_list.length; i++) {
+        feature = feature_list[i]
+        if (
+            feature.location.latitude === point.latitude &&
+            feature.location.longitude === point.longitude
+        ) {
+            return feature
+        }
+    }
+    var name = ''
+    feature = {
+        name: name,
+        location: point
+    }
+    return feature
+}
+function getFeature(call, callback) {
+    callback(null, checkFeature(call.request))
+}
+
+
+//  二、流式rpc
+function listFeatures(call) {
+    var lo = call.request.lo
+    var hi = call.request.hi
+    var left = _.min([lo.longitude, hi.longitude])
+    var right = _.max([lo.longitude, hi.longitude])
+    var top = _.max([lo.latitude, hi.latitude])
+    var bottom = _.min([lo.latitude, hi.latitude])
+    // For each feature, check if it is in the given bounding box
+    _.each(feature_list, function(feature) {
+        if (feature.name === '') {
+            return
+        }
+        if (
+            feature.location.longitude >= left &&
+            feature.location.longitude <= right &&
+            feature.location.latitude >= bottom &&
+            feature.location.latitude <= top
+        ) {
+            call.write(feature)
+        }
+    })
+    call.end()
+}
+
+
+// 启动服务端
+var server = new grpc.Server()
+server.addService(hello_proto.Greeter.service, { sayHello: sayHello })
+server.bind('localhost:50051', grpc.ServerCredentials.createInsecure())
+server.start()
+
+
+
+//  创建客户端（创建调用）
+//  一、简单rpc
+var point = {latitude: 409146138, longitude: -746188906};
+stub.getFeature(point, function(err, feature) {
+  if (err) {
+    // process error
+  } else {
+    // process feature
+  }
+});
+
+
+// 二、流式rpc
+var call = client.listFeatures(rectangle);
+  call.on('data', function(feature) {
+      console.log('Found feature called "' + feature.name + '" at ' +
+          feature.location.latitude/COORD_FACTOR + ', ' +
+          feature.location.longitude/COORD_FACTOR);
+  });
+  call.on('end', function() {
+    // The server has finished sending
+  });
+  call.on('status', function(status) {
+    // process status
+  });
+
+
+  
