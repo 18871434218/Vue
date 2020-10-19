@@ -57,6 +57,11 @@ import Cascader from '@/components/ElementUI/Cascader.vue'
 import container from '@/components/UI/Layout/container'    
 import elrow from '@/components/UI/Layout/elrow'
 
+import two from '@/components/3D/two'
+import three from '@/components/3D/three'
+import fours from '@/components/3D/four'
+import fives from '@/components/3D/five'
+
 // xe-utils插件
 import 'xe-utils'
 import VXETable from 'vxe-table'
@@ -78,7 +83,7 @@ export default new Router({
   routes: [
     {
       path: '/',             
-      redirect: '/eltableTemplate'
+      redirect: '/fives'
     },
     {
       path: '/home',  
@@ -309,5 +314,25 @@ export default new Router({
       name: 'Dialog',
       component: Dialog
     },
+    {
+      path: '/two',          // 对话框
+      name: 'two',
+      component: two
+    },
+    {
+      path: '/three',          // 对话框
+      name: 'three',
+      component: three
+    },
+    {
+      path: '/fours',          // 对话框
+      name: 'fours',
+      component: fours
+    },
+    {
+      path: '/fives',          // 对话框
+      name: 'fives',
+      component: fives
+    }
   ]
 })

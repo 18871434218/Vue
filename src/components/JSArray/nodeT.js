@@ -86,13 +86,13 @@
 //     console.log(ret);
 // })
 
-var util = require('util');
+// var util = require('util');
 
-let a = util.isDate(new Date())
-console.log(a)
+// let a = util.isDate(new Date())   // true
+// console.log(a)
 
-let b = util.isDate(Date());
-console.log(b)
+// let b = util.isDate(Date());     // without 'new' return a string     false
+// console.log(b)
 
-let c = util.isDate({});
-console.log(c)
+// let c = util.isDate({});       
+// console.log(c)
