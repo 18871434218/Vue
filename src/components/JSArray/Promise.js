@@ -14,7 +14,6 @@
 
 // 函数callback即为回调函数，它作为参数传进请求函数，并将在合适的时候被调用执行
 
-
 //    回调主要有以下两个问题
 //      1.线性理解能力缺失，回调地狱
 //        过深的嵌套，导致回调地狱，难以追踪回调的执行顺序
@@ -77,7 +76,6 @@
 // foo(1).then(function(msg) {
 //     console.log(msg[0], msg[1])
 // })
-
 
 
 //   async函数执行的时候，一旦遇到await就会先返回，等到异步操作完成，再接着执行函数体内后面的语句，并且最终返回一个Promised对象
@@ -150,14 +148,15 @@
 
 // obj.hasOwnProperty('a')    // 判断是否有这个属性
 
-var obj = {
-    a: 1,
-    fn: function() {},
-    c: {
-        d: 5
-    }
-};
+// var obj = {
+//     a: 1,
+//     fn: function() {},
+//     c: {
+//         d: 5
+//     }
+// };
 
-console.log(obj.hasOwnProperty('a'));     // true
-console.log(obj.hasOwnProperty('fn'));    // true
-console.log(obj.hasOwnProperty('c'));     // true    
+// console.log(obj.hasOwnProperty('a'));     // true
+// console.log(obj.hasOwnProperty('fn'));    // true
+// console.log(obj.hasOwnProperty('c'));     // true
+

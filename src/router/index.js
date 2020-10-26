@@ -30,43 +30,45 @@ import basicTable from '@/components/VXETable/basicTable.vue'
 import objectCircleLog from '@/components/projectTest/objectCircleLog.vue'
 
 // 函数功能测试
-import Time from '@/components/TestFunction/Time.vue'          // 倒计时提示
-import objfor from '@/components/TestFunction/objfor.vue'      // 对象循环
+import Time from '@/components/TestFunction/Time.vue' // 倒计时提示
+import objfor from '@/components/TestFunction/objfor.vue' // 对象循环
 
 // Vue属性
-import Vue$Data from '@/components/TestFunction/Vue$Data'       // 测试Vue.$data属性
+import Vue$Data from '@/components/TestFunction/Vue$Data' // 测试Vue.$data属性
 
 // element-ui组件标签
-import InfiniteScroll from '@/components/ElementUI/InfiniteScroll.vue'    // 无线滚动标签
-import Card from '@/components/ElementUI/Card.vue'                        // 卡片容器
-import Timeline from '@/components/ElementUI/Timeline.vue'              // 时间线
-import Steps from '@/components/ElementUI/Steps.vue'                    // 步骤条
-import DropDown from '@/components/ElementUI/DropDown.vue'            // 下拉菜单
-import InputNumber from '@/components/ElementUI/InputNumber.vue'       // 计数器
-import Select from '@/components/ElementUI/Select'                     // 选择器
-import lnput from '@/components/ElementUI/Input'                       // 输入框
-import table from '@/components/ElementUI/table.vue'                   // 表格
-import eltableTemplate from '@/components/ElementUI/eltableTemplate.vue'     // 表格slot插入内容属性
-import Form from '@/components/ElementUI/Form.vue'               // 表单
-import Upload from '@/components/ElementUI/Upload.vue'           // 上传文件
-import Tabs from '@/components/ElementUI/Tabs.vue'                // 标签页
-import Dialog from '@/components/ElementUI/Dialog.vue'               // 弹出对话框
+import InfiniteScroll from '@/components/ElementUI/InfiniteScroll.vue' // 无线滚动标签
+import Card from '@/components/ElementUI/Card.vue' // 卡片容器
+import Timeline from '@/components/ElementUI/Timeline.vue' // 时间线
+import Steps from '@/components/ElementUI/Steps.vue' // 步骤条
+import DropDown from '@/components/ElementUI/DropDown.vue' // 下拉菜单
+import InputNumber from '@/components/ElementUI/InputNumber.vue' // 计数器
+import Select from '@/components/ElementUI/Select' // 选择器
+import lnput from '@/components/ElementUI/Input' // 输入框
+import table from '@/components/ElementUI/table.vue' // 表格
+import eltableTemplate from '@/components/ElementUI/eltableTemplate.vue' // 表格slot插入内容属性
+import Form from '@/components/ElementUI/Form.vue' // 表单
+import Upload from '@/components/ElementUI/Upload.vue' // 上传文件
+import Tabs from '@/components/ElementUI/Tabs.vue' // 标签页
+import Dialog from '@/components/ElementUI/Dialog.vue' // 弹出对话框
 import Cascader from '@/components/ElementUI/Cascader.vue'
 
 // Layer UI
-import container from '@/components/UI/Layout/container'    
+import container from '@/components/UI/Layout/container'
 import elrow from '@/components/UI/Layout/elrow'
 
 import two from '@/components/3D/two'
 import three from '@/components/3D/three'
 import fours from '@/components/3D/four'
 import fives from '@/components/3D/five'
+import threeee from '@/components/3D/threeee'
+
+import testTask from '@/components/backTask/testTask'
 
 // xe-utils插件
 import 'xe-utils'
 import VXETable from 'vxe-table'
 import 'vxe-table/lib/style.css'
-
 
 // element-ui插件
 import ElementUI from 'element-ui'
@@ -79,19 +81,19 @@ Vue.use(VXETable)
 /* Vue.use(button, select) */
 
 export default new Router({
-  mode: 'history',               //在显示页面地址栏上删除#号
+  mode: 'history', // 在显示页面地址栏上删除#号
   routes: [
     {
-      path: '/',             
-      redirect: '/fives'
+      path: '/',
+      redirect: '/testTask'
     },
     {
-      path: '/home',  
+      path: '/home',
       name: 'home',
       component: Home,
       children: [
         {
-          path:'one', 
+          path: 'one',
           component: One
         },
         {
@@ -104,49 +106,49 @@ export default new Router({
           component: Third
         },
         {
-          path: '/home/Four/:id/:name',          //url中传参
+          path: '/home/Four/:id/:name', // url中传参
           name: 'Four',
-          component: Four 
+          component: Four
         },
         {
-          path: '/home/Five/:id/:name',          //编程式传参
+          path: '/home/Five/:id/:name', // 编程式传参
           name: 'Five',
           component: Five
         },
         {
-          path: '/home/Six',     //子页面6
+          path: '/home/Six', // 子页面6
           name: 'Six',
           component: Six
-        },
+        }
       ]
     },
-    {                                 // 测试vue.$data属性
+    { // 测试vue.$data属性
       path: '/Vue$Data',
       name: 'Vue$Data',
       component: Vue$Data
    },
     {
-      path: '/Seven',       //子页面7
+      path: '/Seven', // 子页面7
       name: 'Seven',
       component: Seven
     },
     {
-      path: '/Eight',       //子页面8
+      path: '/Eight', // 子页面8
       name: 'Eight',
       component: Eight
     },
     {
-      path: '/Login',       //子页面8
+      path: '/Login', // 子页面8
       name: 'Login',
       component: Login
     },
     {
-      path: '/VueTest',   //测试小功能
+      path: '/VueTest', // 测试小功能
       name: 'VueTest',
       component: VueTest
     },
     {
-      path: '/VueEight',  //测试
+      path: '/VueEight', // 测试
       name: 'VueEight',
       component: VueEight
     },
@@ -181,22 +183,22 @@ export default new Router({
        component: TestgetDevice
     },
     {
-      path: '/Time',               // 倒计时提示
+      path: '/Time', // 倒计时提示
       name: 'Time',
       component: Time
     },
     {
-       path: '/container',       // 容器区域划分
+       path: '/container', // 容器区域划分
        name: 'container',
        component: container
     },
     {
-       path: '/elrow',           // 行划分区域
+       path: '/elrow', // 行划分区域
        name: 'elrow',
        component: elrow
     },
     {
-       path: '/Cascader',    
+       path: '/Cascader',
        name: 'Cascader',
        component: Cascader
     },
@@ -209,7 +211,7 @@ export default new Router({
        path: '/Echartbar',
        name: 'Echartbar',
        component: Echartbar
-    },{
+    }, {
        path: '/publish',
        name: 'publish',
        component: publish
@@ -245,94 +247,104 @@ export default new Router({
       component: objectCircleLog
     },
     {
-      path: '/InfiniteScroll',       // 无线滚动 
+      path: '/InfiniteScroll', // 无线滚动
       name: 'InfiniteScroll',
       component: InfiniteScroll
     },
     {
-      path: '/Card',                 // 卡片容器
+      path: '/Card', // 卡片容器
       name: 'Card',
       component: Card
-    },                
+    },
     {
-      path:'/Timeline',              // 时间线
+      path: '/Timeline', // 时间线
       name: 'Timeline',
       component: Timeline
     },
     {
-      path:'/Steps',                // 步骤条
+      path: '/Steps', // 步骤条
       name: 'Steps',
       component: Steps
     },
     {
-      path: '/DropDown',            // 下拉菜单  
+      path: '/DropDown', // 下拉菜单
       name: 'DropDown',
       component: DropDown
     },
     {
-      path: '/InputNumber',         // 技术器
+      path: '/InputNumber', // 技术器
       name: 'InputNumber',
       component: InputNumber
     },
-    {          
-      path: '/Select',             // 选择器
+    {
+      path: '/Select', // 选择器
       name: 'Select',
       component: Select
     },
     {
-      path: '/lnput',              // 输入框
+      path: '/lnput', // 输入框
       name: 'lnput',
       component: lnput
     },
     {
-      path: '/table',              // 表格  
+      path: '/table', // 表格
       name: 'table',
       component: table
     },
     {
-      path: '/eltableTemplate',     // 表格slot属性  插入内容
+      path: '/eltableTemplate', // 表格slot属性  插入内容
       name: 'eltableTemplate',
       component: eltableTemplate
     },
     {
-      path: '/Form',               // 表单
+      path: '/Form', // 表单
       name: 'Form',
       component: Form
     },
     {
-      path: '/Upload',             // 上传
+      path: '/Upload', // 上传
       name: 'Upload',
       component: Upload
     },
     {
-      path: '/Tabs',           // tabs标签页
+      path: '/Tabs', // tabs标签页
       name: 'Tabs',
       component: Tabs
     },
     {
-      path: '/Dialog',          // 对话框
+      path: '/Dialog', // 对话框
       name: 'Dialog',
       component: Dialog
     },
     {
-      path: '/two',          // 对话框
+      path: '/two', // 对话框
       name: 'two',
       component: two
     },
     {
-      path: '/three',          // 对话框
+      path: '/three', // 对话框
       name: 'three',
       component: three
     },
     {
-      path: '/fours',          // 对话框
+      path: '/fours', // 对话框
       name: 'fours',
       component: fours
     },
     {
-      path: '/fives',          // 对话框
+      path: '/fives', // 对话框
       name: 'fives',
       component: fives
+    },
+    {
+      path: '/threeee', // 对话框
+      name: 'threeee',
+      component: threeee
+    },
+    {
+      path: '/testTask', // 对话框
+      name: 'testTask',
+      component: testTask
     }
   ]
 })
