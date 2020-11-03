@@ -26,7 +26,7 @@ export default {
                     console.log('失败')
                 } else {
                     console.log('成功')
-                    this.message = response.data
+                    this.message = response
                 }
             })
         },

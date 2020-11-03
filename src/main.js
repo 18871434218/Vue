@@ -5,11 +5,9 @@ import App from './App'
 import router from './router'
 import store from './store'
 import axios from './library/axios'
-import VueAxios from 'vue-axios'
 
 // 添加视频播放库
 import VideoPlayer from 'vue-video-player'
-Vue.use(VueAxios, axios)
 require('video.js/dist/video-js.css')
 require('vue-video-player/src/custom-theme.css')
 

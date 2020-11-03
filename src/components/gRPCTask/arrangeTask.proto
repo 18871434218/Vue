@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option java_package = "ex.grpc";
+option objc_class_prefix = "HSW";
+
+package arrangeTask;
+
+service MyTest {
+  rpc getCar (taskData) returns ( ID) {}
+  rpc getTaskIdQR (qr) returns (ID) {}
+  rpc getTaskDataWithId (ID) returns (taskData) {}
+  rpc getTask (limit) returns (taskData) {}
+  rpc unlockTask (ID) returns (reply) {}
+  rpc unlockCar (ID) returns (reply) {}
+}
+
+message qr {
+  string qr = 1;
+}
+
+message limit {
+  int32 lim = 1;
+}
+
+message taskData {
+  string id = 1;
+  repeated string datas = 2 ; 
+}
+
+message ID {
+  string id = 1;
+}
+
+message reply {
+  string word = 1;
+}

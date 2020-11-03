@@ -1,5 +1,9 @@
+/* eslint-disable prefer-promise-reject-errors */
 //     1、回调
 //        回调是编写和处理JavaScript程序异步逻辑的最常用方式，无论是setTimeout还是ajax,都是以回调的方式把我们打算做的事情在某一时刻执行
+
+
+// import axios from '../../library/axios'
 
 // import { getDayOfMonth, getBaseURL } from "xe-utils/methods"
 
@@ -21,7 +25,6 @@
 //        回调函数的调用逻辑是在请求函数内部，我们无法保证回调一定会被正确调用。回调本身没有错误处理机制，
 //        需要额外设计。可能出现的错误包括：回调返回错误结果、吞掉可能出现的错误与异常、回调没有执行、回调被多次执行、回调被同步执行等等
 
-
 //  Promise的一般使用形式
 //  可以通过构造器Promise()构造promise实例
 
@@ -36,9 +39,7 @@
 // var onFullfilled = function() {console.log("finish")}  // 用于处理完成
 // var onRejected = function() {console.log("error")}   // 用于处理拒绝
 
-// p.then(onFullfilled, onRejected)       //  
-
-
+// p.then(onFullfilled, onRejected)       //
 
 // Promise.all()
 // var p1 = Promise.resolve(42);
@@ -46,7 +47,7 @@
 // var p3 = Promise.reject("Oops");
 
 // Promise.race([p1, p2, p3])
-// .then( function(msg) {
+// .then(function(msg) {
 //     console.log(msg);
 // });
 
@@ -77,7 +78,6 @@
 //     console.log(msg[0], msg[1])
 // })
 
-
 //   async函数执行的时候，一旦遇到await就会先返回，等到异步操作完成，再接着执行函数体内后面的语句，并且最终返回一个Promised对象
 // 正常情况下，await 命令后面是一个 Promise 对象。
 // 如果不是，会被转成一个立即 resolve 的 Promise 对象。await 命令后面的 Promise 对象如果变为 reject 状态，则 reject 的参数会被 catch 方法的回调函数接收到。
@@ -97,15 +97,12 @@
 // 4. 返回值是 Promis**
 // async 函数的返回值是 Promise 对象，这比 Generator 函数的返回值是 Iterator 对象方便多了。你可以用 then 方法指定下一步的操作。
 
-
-
 // async 函数的使用注意点
 // 关于 async 函数的使用有三点需要注意一下：
 
 // 1. 前面已经说过，await 命令后面的 Promise 对象，运行结果可能是 rejected，所以最好把 await 命令放在 try…catch 代码块中。
 // 2. 多个 await 命令后面的异步操作，如果不存在继发关系，最好让它们同时触发。
 // 3. await 命令只能用在 async 函数之中，如果用在普通函数，就会报错。
-
 
 //  getFoo 与 getBar是两个互相独立、互不依赖的异步操作     无继发关系的异步操作应当同步触发
 //  错误写法，会导致getBar 在getFoo完成后执行
@@ -126,7 +123,7 @@
 // }
 
 //  javascript四种函数形式： 普通函数、async函数、Generator函数和异步Generator函数
-//  异步的基础   
+//  异步的基础
 // 任何时候，只要把一段代码包装成一个函数，并指定它在响应某个事件（定时器、鼠标点击、 Ajax 响应等）时执行，你就是在代码中创建了一个将来执行的块，也由此在这个程序中引入了异步机制。
 
 //  多个异步之间可能存在以下三种关系
@@ -145,7 +142,6 @@
 // 堆（Heap）：对象被分配在一个堆中，一个用以表示一个内存中大的未被组织的区域。
 // 队列（Queue）：一个JavaScript运行时包含了一个待处理的消息队列（又称“事件队列”）。每一个消息都与一个函数（称为“回调函数”）相关联。 当栈为空时，从队列中取出一个消息进行处理。这个处理过程包含了调用与这个消息相关联的函数（以及因而创建了一个初始堆栈帧）。当栈再次为空的时候，也就意味着这个消息处理结束，接着可以处理下一个消息了。这就是“事件循环”的过程。
 
-
 // obj.hasOwnProperty('a')    // 判断是否有这个属性
 
 // var obj = {
@@ -160,3 +156,231 @@
 // console.log(obj.hasOwnProperty('fn'));    // true
 // console.log(obj.hasOwnProperty('c'));     // true
 
+// 学习1    await后是一个promise对象，如果是resolve状态，值就是resolve参数。如果是reject状态，会将错误抛出
+
+// resolve
+// let p = await Promise.resolve(3)
+// console.log(p)   // 3
+// reject
+// let p = await Promise.reject('error');
+// console.log(p)       // 控制台报错
+
+// let p = await 3
+// console.log(p)  // 3
+
+// 学习2 使用try catch捕获
+// function fn () {
+//     // eslint-disable-next-line prefer-promise-reject-errors
+//     return Promise.reject('error')
+// }
+
+// async function asyncFn () {
+//     try {
+//         await fn()
+//         console.log(1)
+//     } catch (e) {
+//         console.log(e) // error
+//     }
+// }
+
+// asyncFn()
+
+// 学习3 使用promise.catch捕获
+// function fn () {
+//     return Promise.reject('error111')
+// }
+
+// async function asyncFn () {
+//     await fn().catch(e => console.log(e))
+//     // do something
+// }
+
+// asyncFn()
+
+// 学习4 使用场景 在业务开发中，我们可能会遇到比如说，你需要等待A接口请求完成后去执行某个操作，如果不使用
+// await的话可以直接将操作插入的请求的then链中，对比两种写法
+// 1 不使用await
+// function http1 () {
+//     axios.get('url')
+//     .then(r => {
+//         diIt()
+//     })
+//     .catch(e => {
+//         console.log(e)
+//     })
+// }
+
+// function doIt() {
+//     // do something
+// }
+
+// 使用await
+// function http2() {
+//     return new Promise((resolve, reject) => {
+//         axios.get('url')
+//         .then(r => {
+//             resolve('success')
+//         })
+//         .catch(e => {
+//             reject('error')
+//         })
+//     })
+// }
+
+// function diIt() {
+//     // do something
+// }
+
+// async function fn() {
+//     let p = await http2()
+//     if (p === 'success') {
+//         diIt()
+//     } else {
+//         pass
+//     }
+// }
+
+// fn()
+
+
+// const taskgeneration = async (ctx, next) => {
+//     const taskId = ctx.request.body.key;        // 任务Id
+//     console.log('---Ta', taskId);
+//     if (taskId == '') {
+//         ctx.body = 'no received field';
+//     } else {
+//         ctx.body = 'received field';
+//         let postkey = { key: taskId }
+//         const taskData = await taskInformation(postkey);
+//         console.log('data', taskData[0]);
+        
+//         let task = new TaskObj();
+//         for (let mission of response) {
+//             if (task.validate(mission)) {
+//                 let oneMssion = task.parseInformation(taskData);       // 解析生成字段
+//                 // 更新入库
+//             }
+//         }
+//     }
+// }
+
+
+// var data = [
+//     {name: "王尼玛", sex:1, age: 30},
+//     {name: "王尼美", sex:0, age: 20},
+//     {name: "王大锤", sex:1, age: 30}
+// ];
+// var str_json = JSON.stringify(data);
+// console.log(str_json);
+
+
+// JS中class的使用
+// class Person {}
+// console.log('--', typeof Person);  // function
+// console.log(Person.prototype.constructor === Person);  // true
+
+
+// 1、用法和使用构造函数一样，通过new来生成对象实例
+// class Person {}
+// let jon = new Person();
+// console.log(jon)
+
+
+// 2、每个类都必须要有一个constructor,如果没有显示声明，JS引擎会自动给它添加一个空的构造函数：
+// class Person {}
+// 等同于
+// class Person {
+//     constructor () {}
+// }
+
+
+
+// 3、属性和方法   定义于constructor内的属性和方法，即定义在this上，属于实例属性和方法，否则属于原型属性和方法
+// class Person {
+//     constructor (name) {
+//         this.name = name;
+//     }
+    
+//     say () {
+//         console.log('hello');
+//     }
+// }
+
+// let jon = new Person('red');     // Person { name: 'red' }
+// console.log('class---', jon);  
+// console.log('name---', jon.name);
+// console.log(jon.hasOwnProperty("name"));  // true
+// console.log(jon.hasOwnPrototype('name'));
+// console.log(jon.hasOwnPrototype('say'));
+
+
+// 3、静态方法
+// 不需要通过实例对象，可以直接通过类来调用的方法，其中的this指向类本身
+// class Person {
+//     static doSay () {
+//         this.say()
+//     }
+//     static say () {
+//         console.log('hello')
+//     }
+// }
+// Person.doSay()  // hello
+
+
+// 4、 静态方法可以被子类继承
+// class Sub extends Person {}
+// Sub.doSay()  // hello
+
+
+// 可以通过super对象访问
+// class Sub extends Person {
+//     static nice () {
+//         return super.doSay()
+//     }
+// }
+
+// Sub.nice()   // hello
+// const ws = new WeakSet()
+// ws.add(1)
+// eslint-disable-next-line symbol-description
+// ws.add(Symbol())
+
+// const map = new Map([
+//     ['name', '张三'],
+//     ['title', 'Author']
+// ])
+
+// console.log(map.size)
+// console.log(map.has('name'))
+// console.log(map.get('name'))
+// console.log(map.has('title'))
+// console.log(map.get('title'))
+
+// const items = [
+//     ['name', '张三'],
+//     ['title', 'Author']
+// ]
+// const map = new Map()
+
+// items.forEach(
+//     ([key, value]) => map.set(key, value)
+// )
+
+// console.log(map)
+// const map = new Map()
+// console.log(map
+// .set(1, 'aaa')
+// .set(1, 'bbb'))
+// console.log(map.get(1))
+
+// console.log(map[Symbol.iterator] === map.entries)
+
+// let y = '12'
+// console.log(y || 'World')
+function Point (x = 0, y = 0) {
+    this.x = x
+    this.y = y
+}
+
+const p = new Point()
+console.log(p)
