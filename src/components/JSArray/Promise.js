@@ -377,10 +377,134 @@
 
 // let y = '12'
 // console.log(y || 'World')
-function Point (x = 0, y = 0) {
-    this.x = x
-    this.y = y
+// function Point (x = 0, y = 0) {
+//     this.x = x
+//     this.y = y
+// }
+
+// const p = new Point()
+// console.log(p)
+
+// function foo (x, x, y) {
+//     // ...
+// }
+// console.log(foo);
+
+// function foo (x, x, y = 1) {
+//     // ...
+// }
+// console.log(foo)
+
+// var proxy = new Proxy({}, {
+//     get: function (target, propKey) {
+//         return 35
+//     }
+// })
+
+// console.log(proxy.time)
+// console.log(proxy.name)
+// console.log(proxy.title)
+
+// const promise = new Promise(function(resolve, reject){
+//     if(){
+//         resolve(value)
+//     } else {
+//         reject(error)
+//     }
+// })
+
+// const p1 = new Promise(function (resolve, reject) {
+//     setTimeout(() => reject(new Error('fail')), 3000)
+// })
+
+// const p2 = new Promise(function (resolve, reject) {
+//     setTimeout(() => resolve(p1), 1000)
+// })
+
+// p2
+// .then(result => console.log(result))
+// .catch(error => console.log(error))
+
+// 定义类
+class Point {
+    constructor (x, y) {
+        this.x = x
+        this.y = y
+    }
+
+    toString () {
+        return '(' + this.x + ',' + this.y + ')'
+    }
 }
 
-const p = new Point()
-console.log(p)
+// var point = new Point(2, 3)
+// console.log(point.toString())
+
+// console.log(point.hasOwnProperty('x'))
+// point.hasOwnProperty('y')
+// point.hasOwnProperty('toString')
+// eslint-disable-next-line no-proto
+// console.log(point.__proto__.hasOwnProperty('toString'))
+
+// var p1 = new Point(2, 3)
+// var p2 = new Point(3, 2)
+// eslint-disable-next-line no-proto
+// p1 和 p2都是Point的实例，它们的原型都是Point.prototype,所以__proto__属性是相等的
+// 不推荐使用__proto__这个属性为类添加属性方法等
+// console.log(p1.__proto__ === p2.__proto__)
+
+// 在类的内部使用get和set关键字，对某个属性设置存值函数和取值函数
+// class MyClass {
+//     constructor () {
+//          this.data = []
+//     }
+
+//     get prop () {
+//         return 'getter'
+//     }
+
+//     set prop (value) {
+//         console.log('setter:' + value)
+//     }
+// }
+
+// let inst = new MyClass()
+// inst.prop = 123
+// console.log(inst.prop)
+
+
+// add_line_disable: function() {
+//     if (this.is_pose3d_data)
+//     return true;
+//     if (this.selected_roads == null || this.line_start == null || this.line_end == null)
+//         return true;
+//     if (this.line_start == this.line_end)
+//         return true;
+//     let line_exist = this.find_road_line({start: this.line_start + 1,end: this.line_end + 1}).exist;
+// return line_exist ? true : false;
+// },
+
+// let a = [1, 2, 3]
+// a.splice(0)
+// console.log(a)
+
+{"tasklist":[
+    {"taskId " : "20DFDFJYW -20201106104445",
+    "taskType": "coating",
+    "boxId": "boxid1",
+    "content":[
+    { "area": "A",  
+    "roadNodes":[
+    {"node": 1,
+    "todo":{"action":1,"target": 1,"direction": 1, "endLevel": 0 },
+    "goods": { "type": 0, "weight": 10 }},
+    {"node": 2,
+    "todo":{"action":1,"target": 1,"direction": 1, "endLevel": 0 },
+    "goods": { "type": 0, "weight": 10 }},
+    {"node": 3,
+    "todo":{"action":1,"target": 1,"direction": 1, "endLevel": 0 },
+    "goods": { "type": 0, "weight": 10 }}]
+             "repeat":1
+           }]
+    }
+]}

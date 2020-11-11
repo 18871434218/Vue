@@ -34,7 +34,7 @@
 
 // var http = require("http");
 // var url = require("url");
- 
+
 // function start() {
 //   function onRequest(request, response) {
 //     var pathname = url.parse(request.url).pathname;
@@ -43,11 +43,11 @@
 //     response.write("Hello World");
 //     response.end();
 //   }
- 
+
 //   http.createServer(onRequest).listen(8888);
 //   console.log("Server has started.");
 // }
- 
+
 // exports.start = start;
 
 // console.log(__filename);  // F:\LearnVue\src\components\JSArray\nodeT.js  返回当前执行脚本的文件名
@@ -58,10 +58,9 @@
 // }
 
 // // 两秒后执行以上函数  只执行一次函数
-// var t = setTimeout(printHello, 2000);  
+// var t = setTimeout(printHello, 2000);
 // 清除定时器
 //  clearTimeout(t);
-
 
 // function printHello() {
 //     console.log("Hello, World");
@@ -69,8 +68,6 @@
 
 // var t = setInterval(printHello, 2000);     //  setInterval()方法会不停地调用函数，直到clearInterval()被调用或窗口被关闭
 // clearInterval(t);     // 清除定时器
-
-
 
 // util核心库
 // const util = require('util');
@@ -94,5 +91,90 @@
 // let b = util.isDate(Date());     // without 'new' return a string     false
 // console.log(b)
 
-// let c = util.isDate({});       
+// let c = util.isDate({});
 // console.log(c)
+
+// console.log(global.__dirname)
+
+// utf-8 编码
+// const jmjcutf8 = Buffer.from('简明教程', 'utf-8')
+// console.log(jmjcutf8)
+
+// utf-8解码
+// const jmjc = jmjcutf8.toString()
+// console.log(jmjc)
+
+// buffer还用作缓存区, 用于数据的缓存
+// var buf = Buffer.alloc(10)
+// buf.write('...')
+
+// console.log(buf)
+// console.log(buf.toString())
+
+// Sream的理念是边读边取，以流的形式读取文件
+
+// var fs = require('fs')
+// var rs = fs.createReadStream('filename', 'utf-8')  // 得到的rs是一个输出流句柄，通过事件触发得到它到状态
+
+// // 数据开始读取
+// // data事件可能会读取多次，每次读取一块数据
+
+// rs.on('data', function (chunk) {
+//     console.log('DATA: ')
+//     console.log(chunk)
+// })
+
+// // 读完触发
+// rs.on('end', )
+
+// {
+//     "boxId": "boxid2",
+//     "taskId": "09808",   
+//     "stepIndex": 0,
+//     "content": [
+//         {
+//             "roadMap": "roadMap1",
+//             "nodesIndex": -1,
+//             "roadNodes": [
+//                 {
+//                     "node": 1,
+//                     "todo": { "action": 1, "target": 1, "direction": 1, "endLevel": 0 },
+//                     "goods": { "type": 0, "weight": 10 }
+//                 },
+//                 {
+//                     "node": 2,
+//                     "todo": { "action": 2, "target": 1, "direction": 1, "endLevel": 0 },
+//                     "goods": { "type": 0, "weight": 10 }
+//                 }
+//             ],
+//             "repeat":1
+//         },
+//         {
+//             "roadMap": "roadMap1",
+//             "nodesIndex": -1,
+//             "roadNodes": [
+//                 {
+//                     "node": 3,
+//                     "todo": { "action": 1, "target": 1, "direction": 1, "endLevel": 0 },
+//                     "goods": { "type": 0, "weight": 10 }
+//                 },
+//                 {
+//                     "node": 4,
+//                     "todo": { "action": 2, "target": 1, "direction": 1, "endLevel": 0 },
+//                     "goods": { "type": 0, "weight": 10 }
+//                 }
+//             ],
+//             "repeat": 1
+//         }
+//     ]
+// }
+
+
+//  不管promise最后的状态，在执行完then或catch指定的回调函数以后，都会执行finally方法指定的回调函数
+// Promise
+// .then(result => {})
+// .catch(error => {})
+// .finally(() => {})
+
+// {"key": "3329197915", "value": {"boxId": "box_1_18:00:58", "taskId": "3329197915", "content": [{"carId": "id004", "repeat": 1, "roadMap": "roadMap1", "roadNodes": [{"flag": true, "node": 5, "todo": {"action": 1, "target": 1, "endLevel": 0, "direction": 1}, "error": false, "goods": {"type": 0, "weight": 10}, "message": "", "nodeCheckTime": "", "nodeFinishTime": "Wed Nov 04 2020 18:01:06 GMT+0800 (GMT+08:00)"}, {"flag": true, "node": 6, "todo": {"action": 2, "target": 1, "endLevel": 0, "direction": 1}, "error": false, "goods": {"type": 0, "weight": 10}, "message": "", "nodeCheckTime": "", "nodeFinishTime": "Wed Nov 04 2020 18:01:11 GMT+0800 (GMT+08:00)"}, {"flag": true, "node": 7, "todo": {"action": 2, "target": 1, "endLevel": 0, "direction": 1}, "error": false, "goods": {"type": 0, "weight": 10}, "message": "", "nodeCheckTime": "", "nodeFinishTime": "Wed Nov 04 2020 18:01:14 GMT+0800 (GMT+08:00)"}], "nodesIndex": 2}, {"carId": "id004", "repeat": 1, "roadMap": "roadMap2", "roadNodes": [{"flag": true, "node": 8, "todo": {"action": 1, "target": 1, "endLevel": 0, "direction": 1}, "error": false, "goods": {"type": 0, "weight": 10}, "message": "", "nodeCheckTime": "", "nodeFinishTime": "Wed Nov 04 2020 18:01:21 GMT+0800 (GMT+08:00)"}, {"flag": true, "node": 9, "todo": {"action": 2, "target": 1, "endLevel": 0, "direction": 1}, "error": false, "goods": {"type": 0, "weight": 10}, "message": "", "nodeCheckTime": "", "nodeFinishTime": "Wed Nov 04 2020 18:01:23 GMT+0800 (GMT+08:00)"}, {"flag": true, "node": 10, "todo": {"action": 2, "target": 1, "endLevel": 0, "direction": 1}, "error": false, "goods": {"type": 0, "weight": 10}, "message": "", "nodeCheckTime": "", "nodeFinishTime": "Wed Nov 04 2020 18:01:25 GMT+0800 (GMT+08:00)"}], "nodesIndex": 2}], "stepIndex": 2}, "schedule": 1604484058258}
+
