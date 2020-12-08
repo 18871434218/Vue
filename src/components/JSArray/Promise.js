@@ -426,16 +426,16 @@
 // .catch(error => console.log(error))
 
 // 定义类
-class Point {
-    constructor (x, y) {
-        this.x = x
-        this.y = y
-    }
+// class Point {
+//     constructor (x, y) {
+//         this.x = x
+//         this.y = y
+//     }
 
-    toString () {
-        return '(' + this.x + ',' + this.y + ')'
-    }
-}
+//     toString () {
+//         return '(' + this.x + ',' + this.y + ')'
+//     }
+// }
 
 // var point = new Point(2, 3)
 // console.log(point.toString())
@@ -487,24 +487,3 @@ class Point {
 // let a = [1, 2, 3]
 // a.splice(0)
 // console.log(a)
-
-{"tasklist":[
-    {"taskId " : "20DFDFJYW -20201106104445",
-    "taskType": "coating",
-    "boxId": "boxid1",
-    "content":[
-    { "area": "A",  
-    "roadNodes":[
-    {"node": 1,
-    "todo":{"action":1,"target": 1,"direction": 1, "endLevel": 0 },
-    "goods": { "type": 0, "weight": 10 }},
-    {"node": 2,
-    "todo":{"action":1,"target": 1,"direction": 1, "endLevel": 0 },
-    "goods": { "type": 0, "weight": 10 }},
-    {"node": 3,
-    "todo":{"action":1,"target": 1,"direction": 1, "endLevel": 0 },
-    "goods": { "type": 0, "weight": 10 }}]
-             "repeat":1
-           }]
-    }
-]}

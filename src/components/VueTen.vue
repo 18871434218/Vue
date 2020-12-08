@@ -17,7 +17,7 @@
            <input type="text" v-model="username"><br>
            <span>密码：</span>
            <input type="password" v-model="pwd"><br>
-           <span>性别：</span> 
+           <span>性别：</span>
            <input type="radio" id="female" value="女" v-model="sex">
            <label for="female">女</label>
            <input type="radio" id="male" value="男" v-model="sex">
@@ -36,7 +36,7 @@
            </select><br>
            <span>介绍：</span>
            <textarea rows="10"></textarea><br><br>
-           <input type="submit" value="注册"> 
+           <input type="submit" value="注册">
         </form><br><br>
         <button @click="isShow=!isShow">toggle</button>
         <transition name="xxx">
@@ -45,51 +45,51 @@
         <!-- ref为某个元素注入一个唯一标识，vue对象通过$el访问这个元素对象 -->
         <p ref="content">三硅谷</p>
         <button @click="hint">提示</button>
-        
+
     </div>
 </template>
 <script>
 export default {
     name: 'VueTen',
-    data(){
-       return{
-          isShow: true, 
-          username:'',
-          pwd:'',
+    data () {
+       return {
+          isShow: true,
+          username: '',
+          pwd: '',
           sex: '女',
-          likes:["basket","foot"],
-          allCitys:[
-              {id:1, name:'BJ'},
-              {id:2, name:'SH'},
-              {id:3, name:'HZ'}
+          likes: ['basket', 'foot'],
+          allCitys: [
+              {id: 1, name: 'BJ'},
+              {id: 2, name: 'SH'},
+              {id: 3, name: 'HZ'}
           ],
           cityId: 2
        }
     },
-    methods:{
-        test(value, event){
+    methods: {
+        test (value, event) {
            alert(value + event.target.innerHTML)
         },
-        test1(){
-            /* event.stopPropagation */     //最初组织事件冒泡函数
-            alert("out")
+        test1 () {
+            /* event.stopPropagation */ // 最初组织事件冒泡函数
+            alert('out')
         },
-        test2(){
-            alert("in")
+        test2 () {
+            alert('in')
         },
-        test3(){
-            /* event.preventDefault */     //最初组织事件默认行为
+        test3 () {
+            /* event.preventDefault */ // 最初组织事件默认行为
             alert('点击了')
         },
-        test4(event){
-            if(event.keyCode === 13){
-                alert(event.target.value + " " + event.keyCode)
+        test4 (event) {
+            if (event.keyCode === 13) {
+                alert(event.target.value + ' ' + event.keyCode)
             }
         },
-        handleSubmit(){
-            console.log(this.username + " " + this.pwd)
+        handleSubmit () {
+            console.log(this.username + ' ' + this.pwd)
         },
-        hint(){
+        hint () {
             alert(this.$refs.content.textContent)
         }
     }
@@ -101,5 +101,5 @@ export default {
   }
   .xxx-enter,xxx-leave-to{
       opacity: 0;
-  } 
+  }
 </style>

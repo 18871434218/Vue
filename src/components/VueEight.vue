@@ -9,9 +9,9 @@
 
 <script>
 export default {
-    name: "VueEight",
-    data(){
-        
+    name: 'VueEight',
+    data () {
+
     }
 }
 </script>

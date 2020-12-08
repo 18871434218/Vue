@@ -1,29 +1,28 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+// import Vue from 'vue'
+// import Vuex from 'vuex'
 
-Vue.use(Vuex)
+// Vue.use(Vuex)
 
-export default new Vuex.Store({
-    state: {
-        msg: "HelloMAGG"
-    },
+// export default new Vuex.Store({
+//     state: {
+//         msg: 'HelloMAGG'
+//     },
 
-    mutations: {},
+//     mutations: {},
 
-    actions: {}
-});
+//     actions: {}
+// })
 
+// const state = ({
+//     userName: 'dong'
+// })
 
-const state = ({
-    userName: 'dong',
-});
+// const getters = {
+//     fullName (state) {
+//         return state.userName + '大王'
+//     }
+// }
 
-const getters = {
-    fullName(state) {
-        return state.userName + '大王';
-    }
-};
-
-const mutations = {
-    SET_username() {}
-};
+// const mutations = {
+//     SET_username () {}
+// }

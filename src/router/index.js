@@ -64,6 +64,7 @@ import fives from '@/components/3D/five'
 import threeee from '@/components/3D/threeee'
 
 import testTask from '@/components/backTask/testTask'
+import testToCarcheck from '@/components/backTask/testToCarcheck'
 
 // xe-utils插件
 import 'xe-utils'
@@ -85,7 +86,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/testTask'
+      redirect: '/testToCarcheck'
     },
     {
       path: '/home',
@@ -345,6 +346,11 @@ export default new Router({
       path: '/testTask', // 对话框
       name: 'testTask',
       component: testTask
+    },
+    {
+      path: '/testToCarcheck',
+      name: 'testToCarcheck',
+      component: testToCarcheck
     }
   ]
 })

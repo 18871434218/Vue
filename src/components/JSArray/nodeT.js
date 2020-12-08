@@ -129,7 +129,7 @@
 
 // {
 //     "boxId": "boxid2",
-//     "taskId": "09808",   
+//     "taskId": "09808",  
 //     "stepIndex": 0,
 //     "content": [
 //         {
@@ -169,12 +169,17 @@
 //     ]
 // }
 
-
 //  不管promise最后的状态，在执行完then或catch指定的回调函数以后，都会执行finally方法指定的回调函数
 // Promise
 // .then(result => {})
 // .catch(error => {})
 // .finally(() => {})
 
-// {"key": "3329197915", "value": {"boxId": "box_1_18:00:58", "taskId": "3329197915", "content": [{"carId": "id004", "repeat": 1, "roadMap": "roadMap1", "roadNodes": [{"flag": true, "node": 5, "todo": {"action": 1, "target": 1, "endLevel": 0, "direction": 1}, "error": false, "goods": {"type": 0, "weight": 10}, "message": "", "nodeCheckTime": "", "nodeFinishTime": "Wed Nov 04 2020 18:01:06 GMT+0800 (GMT+08:00)"}, {"flag": true, "node": 6, "todo": {"action": 2, "target": 1, "endLevel": 0, "direction": 1}, "error": false, "goods": {"type": 0, "weight": 10}, "message": "", "nodeCheckTime": "", "nodeFinishTime": "Wed Nov 04 2020 18:01:11 GMT+0800 (GMT+08:00)"}, {"flag": true, "node": 7, "todo": {"action": 2, "target": 1, "endLevel": 0, "direction": 1}, "error": false, "goods": {"type": 0, "weight": 10}, "message": "", "nodeCheckTime": "", "nodeFinishTime": "Wed Nov 04 2020 18:01:14 GMT+0800 (GMT+08:00)"}], "nodesIndex": 2}, {"carId": "id004", "repeat": 1, "roadMap": "roadMap2", "roadNodes": [{"flag": true, "node": 8, "todo": {"action": 1, "target": 1, "endLevel": 0, "direction": 1}, "error": false, "goods": {"type": 0, "weight": 10}, "message": "", "nodeCheckTime": "", "nodeFinishTime": "Wed Nov 04 2020 18:01:21 GMT+0800 (GMT+08:00)"}, {"flag": true, "node": 9, "todo": {"action": 2, "target": 1, "endLevel": 0, "direction": 1}, "error": false, "goods": {"type": 0, "weight": 10}, "message": "", "nodeCheckTime": "", "nodeFinishTime": "Wed Nov 04 2020 18:01:23 GMT+0800 (GMT+08:00)"}, {"flag": true, "node": 10, "todo": {"action": 2, "target": 1, "endLevel": 0, "direction": 1}, "error": false, "goods": {"type": 0, "weight": 10}, "message": "", "nodeCheckTime": "", "nodeFinishTime": "Wed Nov 04 2020 18:01:25 GMT+0800 (GMT+08:00)"}], "nodesIndex": 2}], "stepIndex": 2}, "schedule": 1604484058258}
+// var a = 10
+// function foo () {
+//     console.log(this.a)
+// }
+// foo()
 
+// console.log(2e3)
+// typeof '单引号'

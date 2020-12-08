@@ -1,0 +1,51 @@
+[
+    {
+        "taskId ": String,
+        "taskType": String,
+        "boxId": String,
+        "content": [
+            {
+                "area": String,
+                "roadNodes": [
+                    {
+                        "node": Number,
+                        "todo": { "action": Number, "target": 1, "direction": 1, "endLevel": 0 },
+                        "goods": { "type": Number, "weight": Number }
+                    },
+                    {
+                        "node": Number,
+                        "todo": { "action": Number, "target": Number, "direction": Number, "endLevel": Number },
+                        "goods": { "type": Number, "weight": Number }
+                    },
+                    {
+                        "node": Number,
+                        "todo": { "action": Number, "target": Number, "direction": Number, "endLevel": Number },
+                        "goods": { "type": Number, "weight": Number }
+                    }
+                ],
+                "repeat": Number
+            },
+            {
+                "area": String,
+                "roadNodes": [
+                    {
+                        "node": 1,
+                        "todo": { "action": 1, "target": 1, "direction": 1, "endLevel": 0 },
+                        "goods": { "type": 0, "weight": 10 }
+                    },
+                    {
+                        "node": 2,
+                        "todo": { "action": 1, "target": 1, "direction": 1, "endLevel": 0 },
+                        "goods": { "type": 0, "weight": 10 }
+                    },
+                    {
+                        "node": 3,
+                        "todo": { "action": 1, "target": 1, "direction": 1, "endLevel": 0 },
+                        "goods": { "type": 0, "weight": 10 }
+                    }
+                ],
+                "repeat": Number
+            }
+        ]
+    }
+]

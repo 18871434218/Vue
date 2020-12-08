@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import axios from './library/axios'
+import './plugins/index'
 
 // 添加视频播放库
 import VideoPlayer from 'vue-video-player'
