@@ -348,7 +348,7 @@ export default new Router({
       component: testTask
     },
     {
-      path: '/testToCarcheck',
+      path: '/testToCarcheck', // 模拟前端测试
       name: 'testToCarcheck',
       component: testToCarcheck
     }

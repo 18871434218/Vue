@@ -18,7 +18,7 @@ const config = {
 // 开发时，修改此处配置参数
 if (process.env.NODE_ENV !== "production") {
     config.mqtt.brokerUrl = "mqtt://10.0.16.25";
-    config.http.baseURL = "http://10.0.13.46:8888";
+    config.http.baseURL = "http://10.0.12.78:8888";
 }
 
 export default config;

@@ -1,0 +1,94 @@
+{
+	"id": "id008",
+	"state": "busy",
+	"area": 1,
+	"value": {
+		"roadMap": "A",
+		"segment": 1,
+		"position": {
+			"frame_id": "/world",
+			"child_frame_id": "/base_footprint",
+			"stamp": {
+				"secs": 1606961773,
+				"nsecs": 143000000
+			},
+			"orientation_x": 120,
+			"orientation_y": 30,
+			"orientation_z": 10,
+			"orientation_w": 10,
+			"agv_x": 120.199,
+			"agv_y": 30.281,
+			"heading": 40
+		},
+		"QRInfo": {
+			"QR_id": "QR_id",
+			"lidar_x": 100,
+			"lidar_y": 100,
+			"lidar_z": 10
+		},
+		"speed": {
+			"linear": 20,
+			"angular": 0.5
+		},
+		"agvStatus": {
+			"weight": 20,
+			"batteryPercent": 80,
+			"liftStatus": 11,
+			"electroMagnet": true,
+			"charge": true,
+			"brake": true,
+			"backIR": true,
+			"bumpedg": true,
+			"frontEMS": true,
+			"rearEMS": true,
+			"agvmode": true,
+			"agvAlarm": 100
+		},
+		"ROSStatus": {
+			"header": {
+				"seq": 1,
+				"stamp": {
+					"secs": 1606961773,
+					"nsecs": 143000000
+				},
+				"frame_id": "frame"
+			},
+			"sys_info": {
+				"cpuload": 0.6000000238418579,
+				"temp": 66.5999984741211,
+				"ram_total_used": 0.6000000238418579,
+				"percentage_used": 0.5
+			},
+			"node_info": [
+				{
+					"name": "name",
+					"status": "found",
+					"node_api": "node_api",
+					"memory_percent": 0.30000001192092896
+				}
+			],
+			"topic_info": [
+				{
+					"name": "name",
+					"status": "status",
+					"rate_exp": 60,
+					"rate_actual": 60
+				}
+			]
+		},
+		"agvControl": {
+			"lift": 11,
+			"leftYellowLed": true,
+			"leftGreenLed": false,
+			"leftRedLed": true,
+			"rightYellowLed": true,
+			"rightGreenLed": false,
+			"rightRedLed": true,
+			"buzzer": true,
+			"electroMagnet": false,
+			"charge": true,
+			"IR": true,
+			"brake": false
+		}
+	}
+}
