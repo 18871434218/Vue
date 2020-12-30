@@ -1,18 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import One from '@/components/One'
-import Two from '@/components/Two'
-import Third from '@/components/Third'
-import Four from '@/components/Four'
-import Five from '@/components/Five'
-import Six from '@/components/Six'
-import Seven from '@/components/Seven'
-import Eight from '@/components/Eight'
-import VueTen from '@/components/VueTen'
+import One from '@/components/Vue/One'
+import Two from '@/components/Vue/Two'
+import Third from '@/components/Vue/Third'
+import Four from '@/components/Vue/Four'
+import Five from '@/components/Vue/Five'
+import Six from '@/components/Vue/Six'
+import Seven from '@/components/Vue/Seven'
+import Eight from '@/components/Vue/Eight'
+import VueTen from '@/components/Vue/VueTen'
 import Login from '@/components/Login'
-import VueTest from '@/components/VueTest'
-import VueEight from '@/components/VueEight'
+import VueTest from '@/components/Vue/VueTest'
+import VueEight from '@/components/Vue/VueEight'
 import remoteVideo from '@/components/agron/remoteVideo'
 import CarMintor from '@/components/CarMonter/CarMintor'
 import testVideo from '@/components/CarMonter/testVideo'
@@ -25,7 +25,6 @@ import publish from '@/components/Car/publish.vue'
 import mammoth from '@/components/plugin/mammoth.vue'
 import acVuex from '@/components/Vue/acVuex.vue'
 import filetrTable from '@/components/testElement/filetrTable.vue'
-import basicTable from '@/components/VXETable/basicTable.vue'
 
 import objectCircleLog from '@/components/projectTest/objectCircleLog.vue'
 
@@ -236,11 +235,6 @@ export default new Router({
       path: '/filetrTable',
       name: 'filetrTable',
       component: filetrTable
-    },
-    {
-      path: '/basicTable',
-      name: 'basicTable',
-      component: basicTable
     },
     {
       path: '/objectCircleLog',

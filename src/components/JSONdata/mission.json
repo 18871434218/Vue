@@ -1,0 +1,64 @@
+{
+    "taskId": "20DFDFJYW1",
+    "taskType": "coating",
+    "boxId": "boxid1",
+    "content": [
+        {
+            "area": "A",
+            "roadNodes": [
+                {
+                    "node": 1,
+                    "todo": {
+                        "name": "ctu",
+                        "action": 2,
+                        "target": 1,
+                        "layer": 1,
+                        "direction": 1,
+                        "endLevel": 0
+                    },
+                    "goods": {
+                        "type": 0,
+                        "weight": 0
+                    }
+                },
+                {
+                    "node": 8,
+                    "todo": {
+                        "name": "ctu",
+                        "action": 2,
+                        "target": 1,
+                        "layer": 1,
+                        "direction": 1,
+                        "endLevel": 0
+                    },
+                    "goods": {
+                        "type": 0,
+                        "weight": 0
+                    }
+                }
+            ],
+            "repeat": 1
+        },
+        {
+            "area": "B",
+            "roadNodes": [
+                {
+                    "node": 1,
+                    "todo": {
+                        "name": "ctu",
+                        "action": 2,
+                        "target": 1,
+                        "layer": 1,
+                        "direction": 1,
+                        "endLevel": 0
+                    },
+                    "goods": {
+                        "type": 0,
+                        "weight": 0
+                    }
+                }
+            ],
+            "repeat": 1
+        }
+    ]
+}

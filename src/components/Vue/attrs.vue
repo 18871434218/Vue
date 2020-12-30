@@ -1,7 +1,6 @@
-//grandfather
 <template>
   <div style="background: blue">
-    father in grandfather
+     father in grandfather
     <father :father-age="50" :child-time="`${time}`"></father>
   </div>
 </template>
@@ -19,44 +18,44 @@ export default {
 }
 </script>
 
-//father
-<template>
-  <div style="background: red">
-    child in father
-    <div>
-      <span>father age:</span>{{fatherAge}}
-    </div>
-    <child v-bind="$attrs"></child>
-  </div>
-</template>
-<script>
-import child from './child'
-export default {
-  components: {
-    child
-  },
-  props: {
-    fatherAge: {
-      type: Number,
-      default: 0
-    }
-  }
-}
-</script>
+// father
+// <template>
+//   <div style="background: red">
+//     child in father
+//     <div>
+//       <span>father age:</span>{{fatherAge}}
+//     </div>
+//     <child v-bind="$attrs"></child>
+//   </div>
+// </template>
+// <script>
+// import child from './child'
+// export default {
+//   components: {
+//     child
+//   },
+//   props: {
+//     fatherAge: {
+//       type: Number,
+//       default: 0
+//     }
+//   }
+// }
+// </script>
 
-//child<template>
-  <div style="background: green">
-    <div>child</div>
-    <div>time: {{childTime}}</div>
-  </div>
-</template>
-<script>
-export default {
-  props: {
-    childTime: {
-      type: String,
-      default: ''
-    }
-  }
-}
-</script>
+// <template>
+//   <div style="background: green">
+//     <div>child</div>
+//     <div>time: {{childTime}}</div>
+//   </div>
+// </template>
+// <script>
+// export default {
+//   props: {
+//     childTime: {
+//       type: String,
+//       default: ''
+//     }
+//   }
+// }
+// </script>

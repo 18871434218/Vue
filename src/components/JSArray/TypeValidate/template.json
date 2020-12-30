@@ -1,7 +1,7 @@
 [
     {
-        "taskId ": String,
-        "taskType": String,
+        "taskId ": "String",
+        "taskType": "String",
         "boxId": String,
         "content": [
             {

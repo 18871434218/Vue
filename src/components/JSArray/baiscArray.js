@@ -11,14 +11,14 @@
 
 
 //  2  检测数组  判断一个对象是不是数组
-// var arr = []
-// var a1 = '2'
-// console.log(a1 instanceof Array);
-// if(arr instanceof Array){}  // 方法一
-// if(Object.prototype.toString.call(arr) == '[object Array]'){}   // 方法二
-// if(Array.isArray(arr)){} // 方法三
-// console.log(Array.isArray(arr))
-// if(arr.constructor == Array){} // 方法四
+var arr = []
+var a1 = '2'
+console.log(a1 instanceof Array);  // false
+if(arr instanceof Array){}  // 方法一  true
+if(Object.prototype.toString.call(arr) == '[object Array]'){}   // 方法二  [object  Object]
+if(Array.isArray(arr)){} // 方法三  []
+console.log(Array.isArray(arr))   // [object Number]
+if(arr.constructor == Array){} // 方法四
 
 
 
@@ -474,7 +474,6 @@
 // }
 
 // requestAnimationFrame   的出现就是为了代替setTimeout去制作动画的，也尽可能不要使用setInterval,如果必须要用setInterval,也一定要加上clearInterval去清除，否则很容易出现一些不可预料的情况
-
 
 
 

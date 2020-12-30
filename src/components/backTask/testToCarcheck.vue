@@ -62,7 +62,7 @@
                     <el-switch v-model="isNormal" active-text="机器正常" inactive-text="机器异常"></el-switch>
                 </el-col>
                  <el-col :span="4">
-                    <el-switch v-model="isEmpty" active-text="箱子空" inactive-text="箱子满"></el-switch>
+                    <el-switch v-model="isEmpty" active-text="节点空" inactive-text="节点满"></el-switch>
                 </el-col>
                 <el-col :span="5">
                   <el-input v-model="node" placeholder="请输入节点">
@@ -76,6 +76,10 @@
                 </el-col>
                 <el-button @click="ConveyorBelt" type="primary" style="margin-left:10px;">确认</el-button>
               </div>
+            </el-form-item>
+
+            <el-form-item label="测试">
+              <el-button @click="roadNet" type="primary" style="margin-left:10px;">确认</el-button>
             </el-form-item>
         </el-form>
       </el-main>
@@ -164,7 +168,7 @@ export default {
       ],
       flag: true,
       node: null,
-      isEmpty: true,
+      isEmpty: false,
       box_id: null,
       isNormal: true,
       task_id: null,
@@ -238,7 +242,7 @@ export default {
     },
     toPostTaskList: function () {
       const data = JSON.parse(this.defaultTask)
-      const url = '/api/optics/mission/allTaskGeneration'
+      const url = '/api/optics/mission/taskGeneration'
       this.$http.post(url, data).then(response => {
         if (response.status !== 200) {
           this.$message({
@@ -251,6 +255,13 @@ export default {
             type: 'success'
           })
         }
+      })
+    },
+    roadNet: function () {
+      const data = { range: "all" };
+      const url = '/api/getRoadNet';
+      this.$http.post(url, data).then(response => {
+        console.log(response.data);
       })
     }
   }
