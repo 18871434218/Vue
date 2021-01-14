@@ -177,3 +177,54 @@
 // }
 
 
+// Map映射  Set集合  弱集合WeakSet   弱映射WeakMap
+
+// let set = new Set([1,2,3,3])
+// console.log(set)
+// console.log([...set])
+
+// let map = new Map([
+//     ['a', '1'],
+//     ['b', '2']
+// ])
+
+// console.log(map)
+
+
+// let m = new Map()
+// let o = { p: 'Hello World' }
+
+// m.set(o, 'content')
+// console.log(m.get(o))
+
+// console.log(m.has(o))
+// console.log(m.delete(o))
+// console.log(m.has(o))
+
+// let set = new Set()
+// let a = NaN
+// let b = NaN
+// let c = {}
+// let d = {}
+// set.add(a).add(b).add(c).add(d)
+// console.log(set)
+// console.log(set.size)
+
+// let { firstName: name, lastName} = { firstName: "John", lastName: "Doe" }
+// // console.log(name)
+// console.log(lastName)
+// console.log(firstName)
+// let a = [2,3];
+// console.log(a.splice(0, a.length));
+// console.log(a);
+
+var map = new Map()
+console.log(map);
+let a = [1, 2, 3, 3, 4, 5, 5, 6, 7, 7];
+for (let i=0; i < a.length; i++) {
+    map.set(a[i], a[i]);
+}
+
+console.log(Array.from(map.values()));
+map.clear()
+console.log(map);

@@ -50,7 +50,8 @@ import Form from '@/components/ElementUI/Form.vue' // 表单
 import Upload from '@/components/ElementUI/Upload.vue' // 上传文件
 import Tabs from '@/components/ElementUI/Tabs.vue' // 标签页
 import Dialog from '@/components/ElementUI/Dialog.vue' // 弹出对话框
-import Cascader from '@/components/ElementUI/Cascader.vue'
+import Cascader from '@/components/ElementUI/Cascader.vue' // 
+import InputSize from '@/components/ElementUI/InputSize.vue'
 
 // Layer UI
 import container from '@/components/UI/Layout/container'
@@ -85,7 +86,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/testToCarcheck'
+      redirect: '/home/InputSize'
     },
     {
       path: '/home',
@@ -104,6 +105,11 @@ export default new Router({
           path: 'Third',
           name: 'Third',
           component: Third
+        },
+        {
+           path: 'InputSize',
+           name: 'InputSize',
+           component: InputSize
         },
         {
           path: '/home/Four/:id/:name', // url中传参

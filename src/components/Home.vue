@@ -3,7 +3,6 @@
         <h1>{{ msg }}</h1>
         <!--添加子路由 导航-->
         <p>
-            <router-link to="/home">首页</router-link> |
             <router-link to="/home/one">子页面1</router-link> |
             <router-link to="/home/two">子页面2</router-link>|
             <router-link :to="{name: 'Third', params: {username: 'test123', password: '12334'}}">子页面3</router-link> |

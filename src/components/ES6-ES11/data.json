@@ -1,0 +1,72 @@
+{
+    "boxId": "bb00001",
+    "taskId": "Empty20210113133656",
+    "content": [
+        {
+            "carId": "id004",
+            "repeat": 1,
+            "roadMap": "B",
+            "roadNodes": [
+                {
+                    "node": 11,
+                    "todo": {
+                        "type": "LIFT",
+                        "action": 12,
+                        "target": 0,
+                        "endLevel": 0,
+                        "direction": 0
+                    },
+                    "error": [
+                        false
+                    ],
+                    "goods": {
+                        "type": -1,
+                        "weight": -1
+                    },
+                    "message": [
+                        "success"
+                    ],
+                    "nodeCheckTime": [
+                        ""
+                    ],
+                    "nodeFinishTime": [
+                        "Wed Jan 13 2021 13:55:13 GMT+0000 (Coordinated Universal Time)"
+                    ]
+                },
+                {
+                    "node": 12,
+                    "todo": {
+                        "type": "LIFT",
+                        "action": 13,
+                        "target": 0,
+                        "endLevel": 0,
+                        "direction": 0
+                    },
+                    "error": [
+                        false
+                    ],
+                    "goods": {
+                        "type": -1,
+                        "weight": -1
+                    },
+                    "message": [
+                        "success"
+                    ],
+                    "nodeCheckTime": [
+                        ""
+                    ],
+                    "nodeFinishTime": [
+                        "Wed Jan 13 2021 13:55:46 GMT+0000 (Coordinated Universal Time)"
+                    ]
+                }
+            ],
+            "nodesIndex": 1,
+            "repeatIndex": 1
+        }
+    ],
+    "taskType": "coating",
+    "preTaskId": "Empty20210113133656",
+    "stepIndex": 0,
+    "taskFinishTime": "Wed Jan 13 2021 13:55:46 GMT+0000 (Coordinated Universal Time)",
+    "taskPublishTime": "Wed Jan 13 2021 13:55:11 GMT+0000 (Coordinated Universal Time)"
+}
