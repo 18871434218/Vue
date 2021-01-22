@@ -195,3 +195,101 @@
 //     console.log(a, b)
 // })
 
+// [
+//     {
+//       "taskId": "20DFDFJYWYYY",
+//       "taskType": "coating",
+//       "preTaskId": "0",
+//       "boxId": "boxid1",
+//       "content": [
+//         {
+//           "area": "A",
+//           "roadNodes": [
+//             {
+//               "node": 1,
+//               "todo": {
+//                 "type": "LIFT",
+//                 "action": 11,
+//                 "target": 1,
+//                 "direction": 1,
+//                 "endLevel": 0
+//               },
+//               "goods": {
+//                 "type": 0,
+//                 "weight": 0
+//               }
+//             }
+//           ],
+//           "repeat": 1
+//         },
+//         {
+//           "area": "B",
+//           "roadNodes": [
+//             {
+//               "node": 0,
+//               "todo": {
+//                 "type": "LIFT",
+//                 "action": 11,
+//                 "target": 1,
+//                 "direction": 1,
+//                 "endLevel": 0
+//               },
+//               "goods": {
+//                 "type": 0,
+//                 "weight": 0
+//               }
+//             }
+//           ],
+//           "repeat": 1
+//         }
+//       ]
+//     }
+//   ]
+
+
+
+
+//   [
+//     {
+//       "taskId": "20DFDFJYWYYY",
+//       "taskType": "EBTA",
+//       "preTaskId": "0",
+//       "boxId": "boxid1",
+//       "content": [
+//         {
+//           "area": "A",
+//           "roadNodes": [
+//             {
+//               "node": 6,
+//               "todo": {
+//                 "type": "LIFT",
+//                 "action": 12,
+//                 "target": 1,
+//                 "direction": 1,
+//                 "endLevel": 0
+//               },
+//               "goods": {
+//                 "type": 0,
+//                 "weight": 0
+//               }
+//             },
+//             {
+//               "node": 4,
+//               "todo": {
+//                 "type": "LIFT",
+//                 "action": 13,
+//                 "target": 1,
+//                 "direction": 1,
+//                 "endLevel": 0
+//               },
+//               "goods": {
+//                 "type": 0,
+//                 "weight": 0
+//               }
+//             }
+//           ],
+//           "repeat": 1
+//         }
+//       ]
+//     }
+//   ]

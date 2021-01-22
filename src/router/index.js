@@ -31,9 +31,8 @@ import objectCircleLog from '@/components/projectTest/objectCircleLog.vue'
 // 函数功能测试
 import Time from '@/components/TestFunction/Time.vue' // 倒计时提示
 import objfor from '@/components/TestFunction/objfor.vue' // 对象循环
-
-// Vue属性
-import Vue$Data from '@/components/TestFunction/Vue$Data' // 测试Vue.$data属性
+import Clipboard from '@/components/TestFunction/Clipboard'  // clipboard.js  Clipboard复制粘贴功能
+import Vue$Data from '@/components/TestFunction/Vue$Data' // 测试Vue.$data属性  // Vue属性
 
 // element-ui组件标签
 import InfiniteScroll from '@/components/ElementUI/InfiniteScroll.vue' // 无线滚动标签
@@ -51,7 +50,7 @@ import Upload from '@/components/ElementUI/Upload.vue' // 上传文件
 import Tabs from '@/components/ElementUI/Tabs.vue' // 标签页
 import Dialog from '@/components/ElementUI/Dialog.vue' // 弹出对话框
 import Cascader from '@/components/ElementUI/Cascader.vue' // 
-import InputSize from '@/components/ElementUI/InputSize.vue'
+import InputSize from '@/components/ElementUI/InputSize.vue'//
 
 // Layer UI
 import container from '@/components/UI/Layout/container'
@@ -86,7 +85,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/home/InputSize'
+      redirect: '/Clipboard'
     },
     {
       path: '/home',
@@ -132,7 +131,12 @@ export default new Router({
       path: '/Vue$Data',
       name: 'Vue$Data',
       component: Vue$Data
-   },
+    },
+    {
+      path: '/Clipboard', // 复制粘贴
+      name: 'Clipboard',
+      component: Clipboard
+    },
     {
       path: '/Seven', // 子页面7
       name: 'Seven',

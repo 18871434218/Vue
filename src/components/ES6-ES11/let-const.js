@@ -218,13 +218,16 @@
 // console.log(a.splice(0, a.length));
 // console.log(a);
 
-var map = new Map()
-console.log(map);
-let a = [1, 2, 3, 3, 4, 5, 5, 6, 7, 7];
-for (let i=0; i < a.length; i++) {
-    map.set(a[i], a[i]);
-}
+// var map = new Map()
+// console.log(map);
+// let a = [1, 2, 3, 3, 4, 5, 5, 6, 7, 7];
+// for (let i=0; i < a.length; i++) {
+//     map.set(a[i], a[i]);
+// }
 
-console.log(Array.from(map.values()));
-map.clear()
-console.log(map);
+// console.log(Array.from(map.values()));
+// map.clear()
+// console.log(map);
+
+// const a = null;
+// console.log(a);

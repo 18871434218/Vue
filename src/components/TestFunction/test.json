@@ -1,0 +1,289 @@
+{
+    "coatingAB": 
+    [
+        {
+           "taskId": "20DFDFJYWYYY",
+           "taskType": "coating",
+           "preTaskId": "0",
+           "boxId": "boxid1", 
+           "content": [
+                {
+                   "area": "A", 
+                   "roadNodes": [ 
+                       {
+                           "node": 2,
+                           "todo": {
+                               "type": "LIFT",
+                               "action": 11,
+                               "target": 1,
+                               "direction": 1,
+                               "endLevel": 0
+                           },
+                           "goods": { 
+                               "type": 0,
+                               "weight": 0
+                           }
+                       }
+                    ],
+                   "repeat": 1
+                },
+                {
+                    "area": "B", 
+                    "roadNodes": [ 
+                        {
+                            "node": 2,
+                            "todo": {
+                                "type": "LIFT",
+                                "action": 11,
+                                "target": 1,
+                                "direction": 1,
+                                "endLevel": 0
+                            },
+                            "goods": { 
+                                "type": 0,
+                                "weight": 0
+                            }
+                        }
+                    ],
+                 "repeat": 1
+               }
+            ]
+        }
+    ],
+
+    "coatingBA": 
+    [
+        {
+           "taskId": "20DFDFJYWYYY",
+           "taskType": "coating",
+           "preTaskId": "0",
+           "boxId": "boxid1", 
+           "content": [
+                {
+                   "area": "B", 
+                   "roadNodes": [ 
+                       {
+                           "node": 2,
+                           "todo": {
+                               "type": "LIFT",
+                               "action": 11,
+                               "target": 1,
+                               "direction": 1,
+                               "endLevel": 0
+                           },
+                           "goods": { 
+                               "type": 0,
+                               "weight": 0
+                           }
+                       }
+                    ],
+                   "repeat": 1
+                },
+                {
+                    "area": "A", 
+                    "roadNodes": [ 
+                        {
+                            "node": 2,
+                            "todo": {
+                                "type": "LIFT",
+                                "action": 11,
+                                "target": 1,
+                                "direction": 1,
+                                "endLevel": 0
+                            },
+                            "goods": { 
+                                "type": 0,
+                                "weight": 0
+                            }
+                        }
+                    ],
+                 "repeat": 1
+               }
+            ]
+        }
+    ],
+
+    "coatingEBTA": 
+    [
+        {
+           "taskId": "20DFDFJYWYYY",
+           "taskType": "EBTA",
+           "preTaskId": "0",
+           "boxId": "boxid1", 
+           "content": [
+                {
+                   "area": "A", 
+                   "roadNodes": [ 
+                       {
+                           "node": 2,
+                           "todo": {
+                               "type": "LIFT",
+                               "action": 11,
+                               "target": 1,
+                               "direction": 1,
+                               "endLevel": 0
+                           },
+                           "goods": { 
+                               "type": 0,
+                               "weight": 0
+                           }
+                       },
+                       {
+                            "node": 2,
+                            "todo": {
+                                "type": "LIFT",
+                                "action": 11,
+                                "target": 1,
+                                "direction": 1,
+                                "endLevel": 0
+                            },
+                            "goods": { 
+                                "type": 0,
+                                "weight": 0
+                            }
+                        }
+                    ],
+                   "repeat": 1
+                }
+            ]
+        }
+    ],
+
+    "coatingEBTB": 
+    [
+        {
+           "taskId": "20DFDFJYWYYY",
+           "taskType": "EBTB",
+           "preTaskId": "0",
+           "boxId": "boxid1", 
+           "content": [
+                {
+                   "area": "B", 
+                   "roadNodes": [ 
+                       {
+                           "node": 2,
+                           "todo": {
+                               "type": "LIFT",
+                               "action": 11,
+                               "target": 1,
+                               "direction": 1,
+                               "endLevel": 0
+                           },
+                           "goods": { 
+                               "type": 0,
+                               "weight": 0
+                           }
+                       },
+                       {
+                            "node": 2,
+                            "todo": {
+                                "type": "LIFT",
+                                "action": 11,
+                                "target": 1,
+                                "direction": 1,
+                                "endLevel": 0
+                            },
+                            "goods": { 
+                                "type": 0,
+                                "weight": 0
+                            }
+                        }
+                    ],
+                   "repeat": 1
+                }
+            ]
+        }
+    ],
+
+    "resin": 
+    [
+        {
+           "taskId": "20DFDFJYWYYY",
+           "taskType": "resin",
+           "preTaskId": "0",
+           "boxId": "boxid1", 
+           "content": [
+                {
+                   "area": "C", 
+                   "roadNodes": [ 
+                       {
+                           "node": 2,
+                           "todo": {
+                               "type": "LIFT",
+                               "action": 11,
+                               "target": 1,
+                               "direction": 1,
+                               "endLevel": 0
+                           },
+                           "goods": { 
+                               "type": 0,
+                               "weight": 0
+                           }
+                       },
+                       {
+                            "node": 3,
+                            "todo": {
+                                "type": "LIFT",
+                                "action": 11,
+                                "target": 1,
+                                "direction": 1,
+                                "endLevel": 0
+                            },
+                            "goods": { 
+                                "type": 0,
+                                "weight": 0
+                            }
+                        }
+                    ],
+                   "repeat": 1
+                }
+            ]
+        }
+    ],
+
+    "assemblage": 
+    [
+        {
+           "taskId": "20DFDFJYWYYY",
+           "taskType": "assemblage",
+           "preTaskId": "0",
+           "boxId": "boxid1", 
+           "content": [
+                {
+                   "area": "D", 
+                   "roadNodes": [ 
+                       {
+                           "node": 2,
+                           "todo": {
+                               "type": "LIFT",
+                               "action": 11,
+                               "target": 1,
+                               "direction": 1,
+                               "endLevel": 0
+                           },
+                           "goods": { 
+                               "type": 0,
+                               "weight": 0
+                           }
+                       },
+                       {
+                            "node": 3,
+                            "todo": {
+                                "type": "LIFT",
+                                "action": 11,
+                                "target": 1,
+                                "direction": 1,
+                                "endLevel": 0
+                            },
+                            "goods": { 
+                                "type": 0,
+                                "weight": 0
+                            }
+                        }
+                    ],
+                   "repeat": 1
+                }
+            ]
+        }
+    ]
+}
