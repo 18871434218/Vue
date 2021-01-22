@@ -11,18 +11,18 @@
 
 
 //  2  检测数组  判断一个对象是不是数组
-var arr = []
-var a1 = '2'
-console.log(a1 instanceof Array);  // false
-if(arr instanceof Array){}  // 方法一  true
-if(Object.prototype.toString.call(arr) == '[object Array]'){}   // 方法二  [object  Object]
-if(Array.isArray(arr)){} // 方法三  []
-console.log(Array.isArray(arr))   // [object Number]
-if(arr.constructor == Array){} // 方法四
+// var arr = []
+// var a1 = '2'
+// console.log(a1 instanceof Array);  // false
+// if(arr instanceof Array){}  // 方法一  true
+// if(Object.prototype.toString.call(arr) == '[object Array]'){}   // 方法二  [object  Object]
+// if(Array.isArray(arr)){} // 方法三  []
+// console.log(Array.isArray(arr))   // [object Number]
+// if(arr.constructor == Array){} // 方法四
 
 
 
-//        2、数组方法
+//   2、数组方法
 // Array.from(arrayLike, mapFn, thisArg)     该方法从一个类似数组或可迭代对象创建一个新的数组实例。参数arrayLike是想要转换成真实数组的类数组对象或可遍历对象
 //  mapFn是可选参数，如果指定了该参数，则最后生成的数组会经过该函数的加工处理后再返回。thisArg是可选参数，为执行mapFn函数时this的值
 // 任何有length属性的对象都可以通过Array.from方法转为数组
@@ -794,7 +794,7 @@ if(arr.constructor == Array){} // 方法四
 
 // let s = Symbol('是我树酱');
 // let s1 = Symbol('是我树酱');
-// console.log(s === s1)
+// console.log(s === s1)s
 
 // console.log(typeof Symbol('tree'))
 // console.log(typeof String(Symbol('tree')));
@@ -811,8 +811,21 @@ if(arr.constructor == Array){} // 方法四
 //     return Object.prototype.toString.call(obj).slice(8, -1);
 // }
 
-const a = 1;
-console.log(Object.prototype.toString(a));   // [object Object]
-console.log(Object.prototype.toString.call(a))   // [object Number]
+// const a = 1;
+// console.log(Object.prototype.toString(a));   // [object Object]
+// console.log(Object.prototype.toString.call(a))   // [object Number]
+
+// const a = [];
+// a[3] = { "index": 3, "isFull": 0, "enterNode": 0, "leaveNode": 0 };
+// console.log(a);
+// console.log('111', a[0]);
+
+// for (let name of a) {
+//     if (name !== undefined) {
+//         console.log(name);
+//     }
+// }
+
+
 
 
