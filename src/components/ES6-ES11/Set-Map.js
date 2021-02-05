@@ -116,4 +116,10 @@
 
 // console.log(process.env);
 
+// const myFunc = function() {}
+
+// const myFunc = () => {
+//     console.log('11111');
+// }
+// myFunc();
 

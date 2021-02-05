@@ -1,35 +1,14 @@
 {
-    "coatingAB": 
-    [
+    "coatingAB": [
         {
-           "taskId": "20DFDFJYWYYY",
-           "taskType": "coating",
-           "preTaskId": "0",
-           "boxId": "boxid1", 
-           "content": [
+            "taskId": "20DFDFJYWYYY",
+            "taskType": "coating",
+            "preTaskId": "0",
+            "boxId": "boxid1",
+            "content": [
                 {
-                   "area": "A", 
-                   "roadNodes": [ 
-                       {
-                           "node": 2,
-                           "todo": {
-                               "type": "LIFT",
-                               "action": 11,
-                               "target": 1,
-                               "direction": 1,
-                               "endLevel": 0
-                           },
-                           "goods": { 
-                               "type": 0,
-                               "weight": 0
-                           }
-                       }
-                    ],
-                   "repeat": 1
-                },
-                {
-                    "area": "B", 
-                    "roadNodes": [ 
+                    "area": "A",
+                    "roadNodes": [
                         {
                             "node": 2,
                             "todo": {
@@ -39,49 +18,17 @@
                                 "direction": 1,
                                 "endLevel": 0
                             },
-                            "goods": { 
+                            "goods": {
                                 "type": 0,
                                 "weight": 0
                             }
                         }
                     ],
-                 "repeat": 1
-               }
-            ]
-        }
-    ],
-
-    "coatingBA": 
-    [
-        {
-           "taskId": "20DFDFJYWYYY",
-           "taskType": "coating",
-           "preTaskId": "0",
-           "boxId": "boxid1", 
-           "content": [
-                {
-                   "area": "B", 
-                   "roadNodes": [ 
-                       {
-                           "node": 2,
-                           "todo": {
-                               "type": "LIFT",
-                               "action": 11,
-                               "target": 1,
-                               "direction": 1,
-                               "endLevel": 0
-                           },
-                           "goods": { 
-                               "type": 0,
-                               "weight": 0
-                           }
-                       }
-                    ],
-                   "repeat": 1
+                    "repeat": 1
                 },
                 {
-                    "area": "A", 
-                    "roadNodes": [ 
+                    "area": "B",
+                    "roadNodes": [
                         {
                             "node": 2,
                             "todo": {
@@ -91,44 +38,28 @@
                                 "direction": 1,
                                 "endLevel": 0
                             },
-                            "goods": { 
+                            "goods": {
                                 "type": 0,
                                 "weight": 0
                             }
                         }
                     ],
-                 "repeat": 1
-               }
+                    "repeat": 1
+                }
             ]
         }
     ],
-
-    "coatingEBTA": 
-    [
+    "coatingBA": [
         {
-           "taskId": "20DFDFJYWYYY",
-           "taskType": "EBTA",
-           "preTaskId": "0",
-           "boxId": "boxid1", 
-           "content": [
+            "taskId": "20DFDFJYWYYY",
+            "taskType": "coating",
+            "preTaskId": "0",
+            "boxId": "boxid1",
+            "content": [
                 {
-                   "area": "A", 
-                   "roadNodes": [ 
-                       {
-                           "node": 2,
-                           "todo": {
-                               "type": "LIFT",
-                               "action": 11,
-                               "target": 1,
-                               "direction": 1,
-                               "endLevel": 0
-                           },
-                           "goods": { 
-                               "type": 0,
-                               "weight": 0
-                           }
-                       },
-                       {
+                    "area": "B",
+                    "roadNodes": [
+                        {
                             "node": 2,
                             "todo": {
                                 "type": "LIFT",
@@ -137,44 +68,18 @@
                                 "direction": 1,
                                 "endLevel": 0
                             },
-                            "goods": { 
+                            "goods": {
                                 "type": 0,
                                 "weight": 0
                             }
                         }
                     ],
-                   "repeat": 1
-                }
-            ]
-        }
-    ],
-
-    "coatingEBTB": 
-    [
-        {
-           "taskId": "20DFDFJYWYYY",
-           "taskType": "EBTB",
-           "preTaskId": "0",
-           "boxId": "boxid1", 
-           "content": [
+                    "repeat": 1
+                },
                 {
-                   "area": "B", 
-                   "roadNodes": [ 
-                       {
-                           "node": 2,
-                           "todo": {
-                               "type": "LIFT",
-                               "action": 11,
-                               "target": 1,
-                               "direction": 1,
-                               "endLevel": 0
-                           },
-                           "goods": { 
-                               "type": 0,
-                               "weight": 0
-                           }
-                       },
-                       {
+                    "area": "A",
+                    "roadNodes": [
+                        {
                             "node": 2,
                             "todo": {
                                 "type": "LIFT",
@@ -183,44 +88,130 @@
                                 "direction": 1,
                                 "endLevel": 0
                             },
-                            "goods": { 
+                            "goods": {
                                 "type": 0,
                                 "weight": 0
                             }
                         }
                     ],
-                   "repeat": 1
+                    "repeat": 1
                 }
             ]
         }
     ],
-
-    "resin": 
-    [
+    "coatingEBTA": [
         {
-           "taskId": "20DFDFJYWYYY",
-           "taskType": "resin",
-           "preTaskId": "0",
-           "boxId": "boxid1", 
-           "content": [
+            "taskId": "20DFDFJYWYYY",
+            "taskType": "EBTA",
+            "preTaskId": "0",
+            "boxId": "boxid1",
+            "content": [
                 {
-                   "area": "C", 
-                   "roadNodes": [ 
-                       {
-                           "node": 2,
-                           "todo": {
-                               "type": "LIFT",
-                               "action": 11,
-                               "target": 1,
-                               "direction": 1,
-                               "endLevel": 0
-                           },
-                           "goods": { 
-                               "type": 0,
-                               "weight": 0
-                           }
-                       },
-                       {
+                    "area": "A",
+                    "roadNodes": [
+                        {
+                            "node": 2,
+                            "todo": {
+                                "type": "LIFT",
+                                "action": 11,
+                                "target": 1,
+                                "direction": 1,
+                                "endLevel": 0
+                            },
+                            "goods": {
+                                "type": 0,
+                                "weight": 0
+                            }
+                        },
+                        {
+                            "node": 2,
+                            "todo": {
+                                "type": "LIFT",
+                                "action": 11,
+                                "target": 1,
+                                "direction": 1,
+                                "endLevel": 0
+                            },
+                            "goods": {
+                                "type": 0,
+                                "weight": 0
+                            }
+                        }
+                    ],
+                    "repeat": 1
+                }
+            ]
+        }
+    ],
+    "coatingEBTB": [
+        {
+            "taskId": "20DFDFJYWYYY",
+            "taskType": "EBTB",
+            "preTaskId": "0",
+            "boxId": "boxid1",
+            "content": [
+                {
+                    "area": "B",
+                    "roadNodes": [
+                        {
+                            "node": 2,
+                            "todo": {
+                                "type": "LIFT",
+                                "action": 11,
+                                "target": 1,
+                                "direction": 1,
+                                "endLevel": 0
+                            },
+                            "goods": {
+                                "type": 0,
+                                "weight": 0
+                            }
+                        },
+                        {
+                            "node": 2,
+                            "todo": {
+                                "type": "LIFT",
+                                "action": 11,
+                                "target": 1,
+                                "direction": 1,
+                                "endLevel": 0
+                            },
+                            "goods": {
+                                "type": 0,
+                                "weight": 0
+                            }
+                        }
+                    ],
+                    "repeat": 1
+                }
+            ]
+        }
+    ],
+    "resin": [
+        {
+            "taskId": "20DFDFJYWYYY",
+            "taskType": "resin",
+            "preTaskId": "0",
+            "boxId": "boxid1",
+            "content": [
+                {
+                    "area": "C",
+                    "roadNodes": [
+                        {
+                            "node": 2,
+                            "todo": {
+                                "type": "LIFT",
+                                "action": 11,
+                                "target": 1,
+                                "direction": 1,
+                                "endLevel": 0
+                            },
+                            "goods": {
+                                "type": 0,
+                                "weight": 0
+                            }
+                        },
+                        {
                             "node": 3,
                             "todo": {
                                 "type": "LIFT",
@@ -229,44 +220,42 @@
                                 "direction": 1,
                                 "endLevel": 0
                             },
-                            "goods": { 
+                            "goods": {
                                 "type": 0,
                                 "weight": 0
                             }
                         }
                     ],
-                   "repeat": 1
+                    "repeat": 1
                 }
             ]
         }
     ],
-
-    "assemblage": 
-    [
+    "assemblage": [
         {
-           "taskId": "20DFDFJYWYYY",
-           "taskType": "assemblage",
-           "preTaskId": "0",
-           "boxId": "boxid1", 
-           "content": [
+            "taskId": "20DFDFJYWYYY",
+            "taskType": "assemblage",
+            "preTaskId": "0",
+            "boxId": "boxid1",
+            "content": [
                 {
-                   "area": "D", 
-                   "roadNodes": [ 
-                       {
-                           "node": 2,
-                           "todo": {
-                               "type": "LIFT",
-                               "action": 11,
-                               "target": 1,
-                               "direction": 1,
-                               "endLevel": 0
-                           },
-                           "goods": { 
-                               "type": 0,
-                               "weight": 0
-                           }
-                       },
-                       {
+                    "area": "D",
+                    "roadNodes": [
+                        {
+                            "node": 2,
+                            "todo": {
+                                "type": "LIFT",
+                                "action": 11,
+                                "target": 1,
+                                "direction": 1,
+                                "endLevel": 0
+                            },
+                            "goods": {
+                                "type": 0,
+                                "weight": 0
+                            }
+                        },
+                        {
                             "node": 3,
                             "todo": {
                                 "type": "LIFT",
@@ -275,15 +264,361 @@
                                 "direction": 1,
                                 "endLevel": 0
                             },
-                            "goods": { 
+                            "goods": {
                                 "type": 0,
                                 "weight": 0
                             }
                         }
                     ],
-                   "repeat": 1
+                    "repeat": 1
                 }
             ]
         }
     ]
+};
+
+
+{
+    "boxId": "boxid1",
+    "taskId": "20DFDFJYWYYY",
+    "content": [
+        {
+            "carId": "001区没车，我是假的",
+            "repeat": 1,
+            "roadMap": "coating_001",
+            "roadNodes": [
+                {
+                    "node": 1,
+                    "todo": {
+                        "type": "LIFT",
+                        "action": 13,
+                        "target": 1,
+                        "endLevel": 1,
+                        "direction": 1
+                    },
+                    "error": [
+                        false
+                    ],
+                    "goods": {
+                        "type": 0,
+                        "weight": 10
+                    },
+                    "insert": -1,
+                    "message": [
+                        "success"
+                    ],
+                    "nodeCheckTime": [
+                        "Mon Jan 25 2021 14:08:52 GMT+0800 (China Standard Time)"
+                    ],
+                    "nodeFinishTime": [
+                        "Mon Jan 25 2021 14:08:52 GMT+0800 (China Standard Time)"
+                    ]
+                },
+                {
+                    "node": 4,
+                    "todo": {
+                        "type": "LIFT",
+                        "action": 12,
+                        "target": 1,
+                        "endLevel": 0,
+                        "direction": 1
+                    },
+                    "error": [
+                        false
+                    ],
+                    "goods": {
+                        "type": 0,
+                        "weight": 0
+                    },
+                    "insert": 0,
+                    "message": [
+                        "success"
+                    ],
+                    "nodeCheckTime": [
+                        ""
+                    ],
+                    "nodeFinishTime": [
+                        "Mon Jan 25 2021 14:08:55 GMT+0800 (China Standard Time)"
+                    ]
+                },
+                {
+                    "node": 1,
+                    "todo": {
+                        "type": "LIFT",
+                        "action": 13,
+                        "target": 1,
+                        "endLevel": 0,
+                        "direction": 1
+                    },
+                    "error": [
+                        false
+                    ],
+                    "goods": {
+                        "type": 0,
+                        "weight": 10
+                    },
+                    "insert": 1,
+                    "message": [
+                        "success"
+                    ],
+                    "nodeCheckTime": [
+                        ""
+                    ],
+                    "nodeFinishTime": [
+                        "Mon Jan 25 2021 14:08:58 GMT+0800 (China Standard Time)"
+                    ]
+                },
+                {
+                    "node": 2,
+                    "todo": {
+                        "type": "LIFT",
+                        "action": 12,
+                        "target": 1,
+                        "endLevel": 1,
+                        "direction": 1
+                    },
+                    "error": [
+                        false
+                    ],
+                    "goods": {
+                        "type": 0,
+                        "weight": 10
+                    },
+                    "insert": -1,
+                    "message": [
+                        "success"
+                    ],
+                    "nodeCheckTime": [
+                        "Mon Jan 25 2021 14:09:01 GMT+0800 (China Standard Time)"
+                    ],
+                    "nodeFinishTime": [
+                        "Mon Jan 25 2021 14:09:01 GMT+0800 (China Standard Time)"
+                    ]
+                },
+                {
+                    "node": 100,
+                    "todo": {
+                        "type": "LIFT",
+                        "action": 13,
+                        "target": 1,
+                        "endLevel": 0,
+                        "direction": 1
+                    },
+                    "error": [
+                        false
+                    ],
+                    "goods": {
+                        "type": 0,
+                        "weight": 10
+                    },
+                    "insert": 0,
+                    "message": [
+                        "success"
+                    ],
+                    "nodeCheckTime": [
+                        ""
+                    ],
+                    "nodeFinishTime": [
+                        "Mon Jan 25 2021 14:09:04 GMT+0800 (China Standard Time)"
+                    ]
+                },
+                {
+                    "node": 100,
+                    "todo": {
+                        "type": "LIFT",
+                        "action": 13,
+                        "target": 1,
+                        "endLevel": 0,
+                        "direction": 1
+                    },
+                    "error": [
+                        false
+                    ],
+                    "goods": {
+                        "type": 0,
+                        "weight": 10
+                    },
+                    "insert": 1,
+                    "message": [
+                        "success"
+                    ],
+                    "nodeCheckTime": [
+                        ""
+                    ],
+                    "nodeFinishTime": [
+                        "Mon Jan 25 2021 14:09:07 GMT+0800 (China Standard Time)"
+                    ]
+                },
+                {
+                    "node": 101,
+                    "todo": {
+                        "type": "LIFT",
+                        "action": 13,
+                        "target": 1,
+                        "endLevel": 1,
+                        "direction": 1
+                    },
+                    "error": [
+                        false
+                    ],
+                    "goods": {
+                        "type": 0,
+                        "weight": 10
+                    },
+                    "insert": -1,
+                    "message": [
+                        "success"
+                    ],
+                    "nodeCheckTime": [
+                        "Mon Jan 25 2021 14:09:10 GMT+0800 (China Standard Time)"
+                    ],
+                    "nodeFinishTime": [
+                        "Mon Jan 25 2021 14:09:10 GMT+0800 (China Standard Time)"
+                    ]
+                },
+                {
+                    "node": 101,
+                    "todo": {
+                        "type": "LIFT",
+                        "action": 12,
+                        "target": 1,
+                        "endLevel": 0,
+                        "direction": 1
+                    },
+                    "error": [
+                        false
+                    ],
+                    "goods": {
+                        "type": 0,
+                        "weight": 10
+                    },
+                    "insert": 0,
+                    "message": [
+                        "success"
+                    ],
+                    "nodeCheckTime": [
+                        ""
+                    ],
+                    "nodeFinishTime": [
+                        "Mon Jan 25 2021 14:09:13 GMT+0800 (China Standard Time)"
+                    ]
+                },
+                {
+                    "node": 2,
+                    "todo": {
+                        "type": "LIFT",
+                        "action": 13,
+                        "target": 1,
+                        "endLevel": 0,
+                        "direction": 1
+                    },
+                    "error": [
+                        false
+                    ],
+                    "goods": {
+                        "type": 0,
+                        "weight": 10
+                    },
+                    "insert": 1,
+                    "message": [
+                        "success"
+                    ],
+                    "nodeCheckTime": [
+                        ""
+                    ],
+                    "nodeFinishTime": [
+                        "Mon Jan 25 2021 14:09:16 GMT+0800 (China Standard Time)"
+                    ]
+                },
+                {
+                    "node": 3,
+                    "todo": {
+                        "type": "LIFT",
+                        "action": 12,
+                        "target": 1,
+                        "endLevel": 1,
+                        "direction": 1
+                    },
+                    "error": [
+                        false
+                    ],
+                    "goods": {
+                        "type": 0,
+                        "weight": 10
+                    },
+                    "insert": -1,
+                    "message": [
+                        "success"
+                    ],
+                    "nodeCheckTime": [
+                        "Mon Jan 25 2021 14:09:19 GMT+0800 (China Standard Time)"
+                    ],
+                    "nodeFinishTime": [
+                        "Mon Jan 25 2021 14:09:19 GMT+0800 (China Standard Time)"
+                    ]
+                },
+                {
+                    "node": 6,
+                    "todo": {
+                        "type": "LIFT",
+                        "action": 13,
+                        "target": 1,
+                        "endLevel": 0,
+                        "direction": 1
+                    },
+                    "error": [
+                        false
+                    ],
+                    "goods": {
+                        "type": 0,
+                        "weight": 0
+                    },
+                    "insert": 0,
+                    "message": [
+                        "success"
+                    ],
+                    "nodeCheckTime": [
+                        ""
+                    ],
+                    "nodeFinishTime": [
+                        "Mon Jan 25 2021 14:09:22 GMT+0800 (China Standard Time)"
+                    ]
+                },
+                {
+                    "node": 3,
+                    "todo": {
+                        "type": "LIFT",
+                        "action": 13,
+                        "target": 1,
+                        "endLevel": 0,
+                        "direction": 1
+                    },
+                    "error": [
+                        false
+                    ],
+                    "goods": {
+                        "type": 0,
+                        "weight": 10
+                    },
+                    "insert": 1,
+                    "message": [
+                        "success"
+                    ],
+                    "nodeCheckTime": [
+                        ""
+                    ],
+                    "nodeFinishTime": [
+                        "Mon Jan 25 2021 14:09:25 GMT+0800 (China Standard Time)"
+                    ]
+                }
+            ],
+            "nodesIndex": 11,
+            "repeatIndex": 1
+        }
+    ],
+    "taskType": "EBTA",
+    "preTaskId": "0",
+    "stepIndex": 0,
+    "taskFinishTime": "Mon Jan 25 2021 14:09:25 GMT+0800 (China Standard Time)",
+    "taskPublishTime": "Mon Jan 25 2021 14:08:48 GMT+0800 (China Standard Time)"
 }

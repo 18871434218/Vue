@@ -1,0 +1,476 @@
+const { manager: carManager } = require('../service/vehicle-center/manage');
+const { handCheck } = require('../service/car-mission/mission-apis');
+const { checkTasklist, checkTask, checkHandCheckField } = require('./validate');
+const { logger } = require('../util/logger.js');
+const { roadNet } = require('../service/road-net/roadnet-iomap');
+const { getDefaultRoadMapNode } = require('../config/A-B_B-A_EBTA-manager');
+const { report } = require('../util/reporter');
+const { MissionManager } = require('../service/mission-center/task-manager');
+
+const point = {
+    node: 4,
+    todo: { action: 11, target: 1, direction: 1, endLevel: 0 },
+    goods: { type: 0, weight: 10 },
+    tag: 0
+};
+
+const nodeState = {
+    state: 'wait',
+    roadLine: [{ x: 102.8, y: 32.6}],
+    startTime: '',
+    endTime: '',
+    checkTime: '',
+    message: ''
+};
+
+const taskGeneration = async(ctx, next) => {
+    const logger1 = logger.scope('taskGeneration');
+    try {
+        const allTask = ctx.request.body;
+        const flag = await checkTasklist(allTask);
+        logger1.debug('字段检验结果', flag);
+        if (flag === true) {
+            const num = allTask.length;
+            ctx.body = { code: 200, message: `received ${num} field` };
+            for (const clusterTask of allTask) {
+                const { repeat, mission } = await newParseTask(clusterTask);
+                await storeTodb(repeat, mission);
+            }
+        } else {
+            report({ code: '302107', func: 'taskGeneration', desc: 'task field error', detail: flag });
+            ctx.body = { code: 400, message: flag };
+            for (const clusterTask of allTask) {
+                if ((await checkTask(clusterTask)) === true) {
+                    const { repeat, mission } = await newParseTask(clusterTask);
+                    await storeTodb(repeat, mission);
+                } else {
+                    continue;
+                }
+            }
+        }
+    } catch (err) {
+        logger1.fatal(err);
+        report({ code: '302108', func: 'taskGeneration', desc: 'Unknown fatal.', detail: err });
+        ctx.body = { code: 400, message: '404 fatal error' + err };
+    }
+};
+
+const newParseTask = async(mission) => {
+    const logger1 = logger.scope('newParseTask');
+    const taskType = mission.type;
+    const repeat = mission.repeat;
+    let taskContent;
+    const content = await parseTaskContent(mission.content);
+
+    // when taskType is coating, roadNodes need Insert node
+    if (taskType === 'coating') {
+        if (content.length === 2 && content[0].roadNodes.length === 1 && content[1].roadNodes.length === 1) {
+            taskContent = await preInsertCoatingNode(content);
+            taskContent = await InsertPoint(taskContent);
+         } else {
+            logger1.error('输入数据类型不对，任务类型coating必须有两段且每段只能一个点');
+            throw new Error('输入数据类型不对，任务类型coating必须有两段且每段只能一个点');
+        }
+    } else if (taskType === 'EBTA') {
+        if (content.length === 1 && content[0].roadNodes.length === 2) {
+            taskContent = await preInsertEBTANode(content);
+            taskContent = await InsertPoint(taskContent);
+        } else {
+            logger1.error('输入数据不符合, 空箱运转只能是一段两个点');
+            throw new Error('输入数据不符合, 空箱运转只能是一段两个点');
+        }
+    } else if (taskType === 'EBTB') {
+        if (content.length === 1 && content[0].roadNodes.length === 2) {
+            taskContent = await InsertPoint(content);
+        } else {
+            logger1.error('输入数据不符合, 空箱运转只能是一段两个点');
+            throw new Error('输入数据不符合, 空箱运转只能是一段两个点');
+        }
+    } else {
+        taskContent = content;
+    }
+    
+    const process = await parseTaskProcess(content);
+
+    return {
+        repeat: repeat,
+        mission: {
+            primaryId: 'C',
+            clusterId: 'C',
+            pubTime: '',
+            schedule: '',
+            startTime: '',
+            endTime: '',
+            type: taskType,
+            stepIndex: 0,
+            content: content,
+            process: process
+        }
+    }
+};
+
+const parseTaskContent = async(content) => {
+    const contents = [];
+    for (const val of content) {
+        const roadMap = val.roadMap;
+        const roadNodes = await parseNodes(val.roadNodes);
+        contents.push({ roadMap: roadMap, roadNodes: roadNodes });
+    }
+
+    return contents;
+};
+
+const parseTaskProcess = async(content) => {
+     let process = [];
+     for (const val of content) {
+        const roadMap = val.roadMap;
+        const roadNodes = await parseNodeProcess(val.roadNodes);  
+        process.push({ roadMap: roadMap, roadNodes: roadNodes, nodeIndex: 0, carId: '', startTime: '', endTime: ''});
+     }
+      
+     return process;
+};
+
+const parseNodes = async(roadNode) => {
+    let copyNode = JSON.parse(JSON.stringify(point));
+    const roadNodes = [];
+    for (const val of roadNode) {
+        copyNode.node = val.node;
+        copyNode.todo.action = val.action;
+        copyNode.todo.target = val.target;
+        roadNodes.push(copyNode);
+    }
+
+    return roadNodes;
+};
+
+const parseNodeProcess = async(roadNodes) => {
+     let processRoadNodes = []
+     let copyNodeState = JSON.parse(JSON.stringify(nodeState));
+     for (let i = 0; i < roadNodes.length; i++) {
+          processRoadNodes.push(copyNodeState);    
+     }
+
+     return processRoadNodes;
+};
+
+const preInsertCoatingNode = async(content) => {
+    const logger1 = logger.scope('preInsertCoatingNode');
+    const InsertcoatingAB = getDefaultRoadMapNode('coatingAB');
+    const InsertcoatingBA = getDefaultRoadMapNode('coatingBA');
+
+    for (let i = 1; i < content.length; i++) {
+        if (content[i].roadMap < content[i - 1].roadMap) {
+            logger1.info('roadMap B 到roadMap A 插入7和6');
+            content[i - 1].roadNodes.push(InsertcoatingBA[0]);
+            content[i].roadNodes.unshift(InsertcoatingBA[1]);
+        } else if (content[i].roadMap > content[i - 1].roadMap) {
+            logger1.info('roadMap A 到roadMap B 插入4和5');
+            content[i - 1].roadNodes.push(InsertcoatingAB[0]);
+            content[i].roadNodes.unshift(InsertcoatingAB[1]);
+        } else {
+            logger1.info('相同roadMap不插入节点');
+            continue;
+        }
+    }
+
+    return content;
+};
+
+const preInsertEBTANode = async(content) => {
+    const logger1 = logger.scope('preInsertEBTANode');
+    const insertNodesEBTA = getDefaultRoadMapNode('EBTA');
+
+    content[0].roadNodes.splice(1, 0, insertNodesEBTA[0], insertNodesEBTA[1]);
+    logger1.info('EBTA插入8，9点成功');
+
+    return content;
+};
+
+const InsertPoint = async(content) => {
+    for (let i = 0; i < content.length; i++) {
+        content[i].roadNodes = await pasreRoadNodeInsertPoint(content[i].roadMap, content[i].roadNodes);
+    }
+
+    return content;
+};
+
+const pasreRoadNodeInsertPoint = async(roadMap, roadNodes) => {
+    let roadPonits = [];
+
+    for (const val of roadNodes) {
+        let InsertPoints = [];
+        let currentPoint = val.node;
+        let currentAction = val.todo.action;
+        let PointObject =  await roadNet(roadMap).getNode(currentPoint);
+        if (PointObject === null) {
+           throw new Error('输入数据不符合, 当前该区域路网该点不存在');
+        };
+        InsertPoints = await praseActionInsertLevel(PointObject, val, currentAction);
+        roadPonits.push.apply(roadPonits, InsertPoints);
+    }
+
+    return roadPonits;
+};
+
+const praseActionInsertLevel = async(PointObject, currentPoint, currentAction) => {
+    let copystartNode = JSON.parse(JSON.stringify(point));
+    let copyendNode = JSON.parse(JSON.stringify(point));
+    const enterNode = PointObject.enterNode;
+    const leaveNode = PointObject.leaveNode;
+    let afterPraseObject;
+    
+    if (enterNode !== 0 && leaveNode === 0) {
+        copystartNode.node = enterNode;
+        copystartNode = await startPointParse(copystartNode, currentAction);
+        afterPraseObject = [copystartNode, currentPoint];
+    } else if (enterNode === 0 && leaveNode !== 0) {
+        copyendNode.node = leaveNode;
+        copyendNode = await endPointParse(copyendNode);
+        afterPraseObject = [currentPoint, copyendNode];
+    } else if (enterNode !== 0 && leaveNode !== 0) {
+        copystartNode.node = enterNode;
+        copystartNode = await startPointParse(copystartNode, currentAction);
+        copyendNode.node = leaveNode;
+        copyendNode = await endPointParse(copyendNode);
+        afterPraseObject = [copystartNode, currentPoint, copyendNode];
+    } else {
+        afterPraseObject = [currentPoint];
+    }
+
+    return afterPraseObject;
+};
+
+const startPointParse = async(startPoint, currentAction) => {
+    startPoint.todo.endLevel = 1;
+    startPoint.tag = -1;
+    if (currentAction === 13) {
+        startPoint.todo.action = 12;
+    } else if (currentAction === 12) {
+        startPoint.todo.action = 13;
+    } else {
+        startPoint.todo.action = 11;
+    }
+
+    return startPoint;
+};
+
+const endPointParse = async(endPoint) => {
+    endPoint.todo.action = 13;
+    endPoint.tag = 1;
+
+    return endPoint;
+};
+
+// store to mysql
+const storeTodb = async(repeat, mission ) => {
+    const logger1 = logger.scope('storeTodb');
+    let copyMission = JSON.parse(JSON.stringify(mission));
+    if (repeat <= 0) {
+        throw new Error('数据不符合, repeat必须大于或等于1');
+    } else if (repeat === 1) {
+        await MissionManager.insert(mission); 
+    } else {
+        for (let i = 0; i < repeat; i++) {      // 循环repeat存入数据库
+            mission.primaryId = copyMission.primaryId + `-${i + 1}`;
+            await MissionManager.insert(mission);        
+        }  
+    }
+    
+}
+
+// Resin calculated weight
+const computerWeight = async(currentCheckMission, currentCarWeight) => {
+    const currentMission = currentCheckMission.value;
+    const stepIndex = currentMission.stepIndex;
+    const currentContent = currentMission.content[stepIndex];
+    const nodesIndex = currentContent.nodesIndex;
+    const roadNodes = currentContent.roadNodes;
+    let allWeight = 0;
+    const areaWeight = [];
+    for (const area of currentMission.content) {
+        let nodeWeight = 0;
+        for (const node of area.roadNodes) {
+            nodeWeight += node.goods.weight;
+        }
+        areaWeight.push(nodeWeight);
+        allWeight += nodeWeight;
+    }
+    let currentNodeWeight = 0;
+    let nodeStepweight = 0;
+    for (let i = 0; i <= nodesIndex; i++) {
+        nodeStepweight += roadNodes[i].goods.weight;
+    }
+    if (stepIndex === 0) {
+        currentNodeWeight = nodeStepweight;
+    } else {
+        for (let j = 0; j < stepIndex; j++) {
+            currentNodeWeight += areaWeight[j];
+        }
+        currentNodeWeight += nodeStepweight;
+    }
+
+    // 1、allWeight代表任务所有重量   2、currentNodeWeight代表节点所需重量  3、currentCarWeight代表车实时重量
+    const remainWeight = allWeight - currentNodeWeight - currentCarWeight;
+    return remainWeight;
+};
+
+const checkFlag = async(stepIndex, stepLength, roadsIndex, roadLength) => {
+    if (stepIndex === stepLength && roadsIndex === roadLength) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
+// query car Ip and currentNode
+const queryCurWeightAndCurNodeAndTaskType = async(mission) => {
+    const currentCheckMission = mission.value;
+    const taskType = currentCheckMission.taskType;
+    const stepIndex = currentCheckMission.stepIndex;
+    const content = currentCheckMission.content;
+    const contentLength = content.length - 1;
+    const currentContent = currentCheckMission.content[stepIndex];
+    const nodesIndexs = currentContent.nodesIndex;
+    const nodesLength = currentContent.roadNodes.length - 1;
+    const roadNodes = currentContent.roadNodes[nodesIndexs];
+    const currentNodeName = roadNodes.node;
+    // const carId = currentContent.carId;
+    // const currentCarWeight = await carManager.queryCurrentWeight(carId);
+    // const flag = await checkFlag(stepIndex, contentLength, nodesIndexs, nodesLength);
+    return {
+        currentTaskType: taskType,
+        currentNode: currentNodeName
+        // flag: flag
+    };
+};
+
+// people to confirm task completion
+const handCheckOver = async(ctx, next) => {
+    const logger1 = logger.scope('handCheckOver');
+    try {
+        const handCheckData = ctx.request.body;
+        const flag = await checkHandCheckField(handCheckData);
+        if (flag === 1) {
+            const desErr = 'missing field in the input parameters';
+            logger1.error(desErr);
+            report({ code: '202110', func: 'handCheckOver', desc: desErr, detail: desErr });
+            ctx.body = { code: 400, message: desErr };
+        } else if (flag === 2) {
+            const desErr = 'the type of the input parameter is not right';
+            logger1.error(desErr);
+            report({ code: '202111', func: 'handCheckOver', desc: desErr, detail: desErr });
+            ctx.body = { code: 400, message: desErr };
+        } else {
+            const taskIdFromFron = handCheckData.taskId;
+            const currentNodeFromFron = handCheckData.currentNode;
+            const boxStatus = handCheckData.status;
+            if (boxStatus === 1) {
+                const currentCheckMission = await manager.query({ key: taskIdFromFron });
+                let getTaskFinishResponse = null;
+                if (currentCheckMission !== null) {
+                    const queryData = await queryCurWeightAndCurNodeAndTaskType(currentCheckMission);
+                    const currentTaskType = queryData.currentTaskType;
+                    const currentNode = queryData.currentNode;
+                    // const flag = queryData.flag;
+                    // const currentCarWeight = queryData.currentCarWeight;
+                    if (currentTaskType === 'coating') {
+                        if (currentNodeFromFron === currentNode) {
+                            getTaskFinishResponse = await handCheck(currentCheckMission, currentNode);
+                            if (getTaskFinishResponse.code === 200) {
+                                logger1.info('hankCheck interface', getTaskFinishResponse.message);
+                                ctx.body = { code: 200, message: getTaskFinishResponse.message };
+                            } else {
+                                const desErr = 'handCkeck interface' + getTaskFinishResponse.message;
+                                logger1.warn(desErr);
+                                report({ code: '302113', func: 'handCheckOver', desc: desErr, detail: desErr });
+                                ctx.body = { code: 400, message: desErr };
+                            }
+                        } else {
+                            const desErr = 'currenNode is not right';
+                            logger1.warn(desErr);
+                            report({ code: '302114', func: 'handCheckOver', desc: desErr, detail: desErr });
+                            ctx.body = { code: 400, message: desErr };
+                        }
+                    } else {
+                        if (currentNodeFromFron === currentNode) {
+                            getTaskFinishResponse = await handCheck(currentCheckMission, currentNode);
+                            if (getTaskFinishResponse.code === 200) {
+                                logger1.info('hankCheck interface', getTaskFinishResponse.message);
+                                ctx.body = { code: 200, message: getTaskFinishResponse.message };
+                            } else {
+                                const desErr = 'handCkeck interface' + getTaskFinishResponse.message;
+                                logger1.warn(desErr);
+                                report({ code: '302115', func: 'handCheckOver', desc: desErr, detail: desErr });
+                                ctx.body = { code: 400, message: desErr };
+                            }
+                        } else {
+                            const desErr = 'currentNode is not right';
+                            logger1.warn(desErr);
+                            report({ code: '302116', func: 'handCheckOver', desc: desErr, detail: desErr });
+                            ctx.body = { code: 400, message: desErr };
+                        }
+                    }
+                } else {
+                    const desErr = 'this taskId does not exist';
+                    logger1.warn(desErr);
+                    report({ code: '302117', func: 'handCheckOver', desc: desErr, detail: desErr });
+                    ctx.body = { code: 400, message: 'this taskId does not exist' };
+                }
+            } else {
+                const desErr = 'The box is out of order';
+                logger1.warn(desErr);
+                report({ code: '302118', func: 'handCheckOver', desc: desErr, detail: desErr });
+                ctx.body = { code: 400, message: desErr };
+            }
+        }
+    } catch (err) {
+        logger1.fatal('fatal error', err);
+        report({ code: '302119', func: 'handCheckOver', desc: 'Unknown fatal.', detail: err });
+        ctx.body = { code: 400, message: 'fatal error ' + err };
+    }
+};
+
+async function removePendingTask(ctx, next) {
+    const logger1 = logger.scope('removePendingTask');
+    try {
+        const { taskId } = ctx.request.body;
+        const result = await manager.remove({ key: taskId, set: 'pending' });
+        ctx.body = result ? { code: 200, message: 'success' } : { code: 400, message: 'fail' };
+    } catch (error) {
+        logger1.fatal('fatal error', error);
+        report({ code: '305134', func: 'removePendingTask', desc: 'Unknown fatal.', detail: error });
+        ctx.body = { code: 400, message: 'fail' };
+    }
+};
+
+async function realTimeWeight(ctx, next) {
+    const logger1 = logger.scope('realTimeWeight');
+    try {
+        const { taskId } = ctx.request.body;
+        const { value: mdata } = await manager.query({ key: taskId });
+        if (mdata) {
+            const result = { taskId: '', carId: '', weight: 0 };
+            result.taskId = mdata.taskId;
+            result.carId = mdata.content[mdata.stepIndex].carId;
+            const { value: carInfo } = await carManager.queryALL(result.carId);
+            result.weight = carInfo ? carInfo.agvStatus.weight : 0;
+            ctx.body = { code: 200, message: result };
+        } else {
+            logger1.warn('fail');
+            report({ code: '105132', func: 'realTimeWeight', desc: 'fail', detail: 'fail' });
+            ctx.body = { code: 400, message: 'fail' };
+        }
+    } catch (err) {
+        logger1.fatal('fail' + err);
+        report({ code: '105133', func: 'realTimeWeight', desc: 'Unknown fatal.', detail: err });
+        ctx.body = { code: 400, message: 'fail' };
+    }
+};
+
+module.exports = {
+    'POST /api/optics/mission/taskGeneration': taskGeneration,
+    'POST /api/optics/mission/handCheckOver': handCheckOver,
+    'POST /api/optics/mission/terminateTask': removePendingTask,
+    'POST /api/optics/mission/realTimeWeight': realTimeWeight
+};

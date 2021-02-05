@@ -1,0 +1,60 @@
+{	
+    "taskType": "coating",
+    "repeat": 1,
+    "content": [
+        {
+            "roadMap": "001",
+            "roadNodes": [
+                {
+                    "node": 1,
+                    "todo": { 
+                        "action": 11, 
+                        "target": 1
+                    }
+                },
+                {
+                    "node": 2,
+                    "todo": { 
+                        "action": 11,
+                        "target": 1
+                    }
+                },
+                {
+                    "node": 3,
+                    "todo": { 
+                        "action": 11,
+                        "target": 1       //  对于CTU来说，货架几层，1,2,3，默认 3
+                    }
+                }
+            ]
+       },
+       {
+            "roadMap": "002",
+            "roadNodes": [
+                {
+                    "node": 1,
+                    "todo": { 
+                        "action": 11, 
+                        "target": 1
+                    }
+                },
+                {
+                    "node": 2,
+                    "todo": { 
+                        "action": 11, 
+                        "target": 1
+                    }
+                },
+                {
+                    "node": 3,
+                    "todo": { 
+                        "action": 11,
+                        "target": 1
+                    }
+                }
+            ]
+        }
+    ]
+}
+
+
