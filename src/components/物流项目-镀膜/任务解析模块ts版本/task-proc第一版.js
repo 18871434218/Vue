@@ -6,7 +6,7 @@ const { handCheck } = require('../service/car-mission/mission-apis');
 const { checkTasklist, checkTask, checkHandCheckField } = require('./validate');
 const { logger } = require('../util/logger.js');
 const { devio } = require('../service/device/io-bitmap');
-const { client: mqttClient } = require('../util/mqtt-client');
+const { client: mqttClient } = require('../../util/mqtt-client');
 
 const allTaskOrCheckGeneration = async(ctx, next) => {
     try {
