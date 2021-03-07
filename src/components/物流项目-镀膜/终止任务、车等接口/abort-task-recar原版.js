@@ -23,10 +23,10 @@ const abortTask = async(ctx, next) => {
             const carId = content.carId;
             let nodeIndex = content.nodesIndex;
             if (nodeIndex === roadNodes.length - 1) {
-                logger1.warn('currentTask is is running on the conveyor belt');
                 const desErr = 'currentTask is is running on the conveyor belt';
+                logger1.warn(desErr);
                 mqttClient.publish('optics/backend/log', JSON.stringify({ code: '102105', time: new Date(), func: 'abortTask', desc: desErr, detail: desErr }), { qos: 0, retain: false });
-                ctx.body = { code: 400, message: 'currentTask is is running on the conveyor belt' };
+                ctx.body = { code: 400, message: desErr };
             } else {
                 nodeIndex = nodeIndex + 1;
             }

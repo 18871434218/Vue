@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "esnext",
+        "lib": [
+            "dom",
+            "es5",
+            "ScriptHost",
+            "ES2015.promise"
+        ],
+        "declaration": false,
+        "sourceMap": true
+    }
+}

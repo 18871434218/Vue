@@ -1,0 +1,101 @@
+{
+    "id": "id000",
+    "area": "coating_001",
+    "state": "idle",
+    "linking": "offline",
+    "value": {
+        "ip": "10.0.12.253",
+        "node": 0,
+        "segment": 0,
+        "roadMap": "coating_001",
+        "speed": {
+            "linear": 0,
+            "angular": 0
+        },
+        "position": {
+            "agv_x": -10,
+            "agv_y": -10,
+            "heading": 0
+        },
+        "agvStatus": {
+            "weight": 0,
+            "batteryPercent": 0
+        }
+    }
+},
+{
+    "id": "id002",
+    "area": "coating_001",
+    "state": "idle",
+    "linking": "offline",
+    "value": {
+        "ip": "10.0.15.5",
+        "node": 13,
+        "segment": 11,
+        "roadMap": "coating_001",
+        "speed": {
+            "linear": 50,
+            "angular": 0.3170450873843158
+        },
+        "position": {
+            "agv_x": 2.428163766860962,
+            "agv_y": 1.214055061340332,
+            "heading": -179.30038873227193
+        },
+        "agvStatus": {
+            "weight": 11300,
+            "batteryPercent": 87.7
+        }
+    }
+},
+{
+    "id": "id004",
+    "area": "coating_001",
+    "state": "idle",
+    "linking": "offline",
+    "value": {
+        "ip": "10.0.15.8",
+        "node": 13,
+        "segment": 11,
+        "roadMap": "coating_001",
+        "speed": {
+            "linear": 0,
+            "angular": 3.437746770784939
+        },
+        "position": {
+            "agv_x": 1.216013387009106,
+            "agv_y": 6.722242162101646,
+            "heading": 175.80961728339577
+        },
+        "agvStatus": {
+            "weight": 11100,
+            "batteryPercent": 56.6
+        }
+    }
+},
+{
+    "id": "id006",
+    "area": "coating_001",
+    "state": "idle",
+    "linking": "offline",
+    "value": {
+        "ip": "10.0.15.12",
+        "node": 0,
+        "segment": 0,
+        "roadMap": "coating_001",
+        "speed": {
+            "linear": 0,
+            "angular": 28.64788975654116
+        },
+        "position": {
+            "agv_x": 0.8239619683487314,
+            "agv_y": 2.401231850173433,
+            "heading": -41.1140761290481
+        },
+        "agvStatus": {
+            "weight": 17200,
+            "batteryPercent": 92.9
+        }
+    }
+}
+]

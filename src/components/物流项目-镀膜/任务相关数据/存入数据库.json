@@ -8,7 +8,7 @@
     "endTime": "",											    //任务完成时间
 
     "type": "coating",								            //任务类型
-
+    "state": "",                                                //任务执行状态 pendding processing finished locked error
     "stepIndex": 0,											    //任务当前执行阶段
     "content": [									           	    //任务内容
         {
@@ -20,13 +20,13 @@
                         "action": 11, 				           	//具体动作
                         "target": 1, 					           	//目标点
                         "direction": 1, 				           	//方向
-                        "endLevel": 0 				           	//确认等级
+                        "endLevel": 0 				           	// 确认等级
                     },
-                    "goods": { 						           	//物料相关合集
-                        "type": 0, 					           	//物料类型
-                        "weight": 10 					           	//物料重量
+                    "goods": { 						           	// 物料相关合集
+                        "type": 0, 					           	// 物料类型
+                        "weight": 10 					           	// 物料重量
                     },
-                    "tag": 0									   	//插入点相关
+                    "tag": 0									   	// 插入点相关
                 },
                 {
                     "node": 2,
